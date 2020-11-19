@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+   <!-- Basic -->
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- Mobile Metas -->
+      <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+      <!-- Site Metas -->
+      <title>MovieDB</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- Site Icons -->
+      <link rel="shortcut icon" href="#" type="image/x-icon" />
+      <link rel="apple-touch-icon" href="#" />
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="css/bootstrap.min.css" />
+      <!-- Pogo Slider CSS -->
+      <link rel="stylesheet" href="css/pogo-slider.min.css" />
+      <!-- Site CSS -->
+      <link rel="stylesheet" href="css/style.css" />
+      <!-- Responsive CSS -->
+      <link rel="stylesheet" href="css/responsive.css" />
+      <!-- Custom CSS -->
+      <link rel="stylesheet" href="css/custom.css" />
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+   </head>
+   <body id="home" data-spy="scroll" data-target="#navbar-wd" data-offset="98">
+      <!-- LOADER -->
+      <div id="preloader">
+         <div class="loader">
+            <img src="images/loader.gif" alt="#" />
+         </div>
+      </div>
+      <!-- END LOADER -->
+      <div class="wrapper">
+      <nav id="sidebar">
+         <div class="menu_section">
+            <ul>
+               <li><a href="index.html">Home</a></li>
+               <li><a href="movieReviews.html">Movies Reviews</a></li>
+               <li><a href="movieRuntime.html">Movies Runtime</a></li>
+               <li><a href="genre.html">Genres by plataform</a></li>
+               <li><a href="year.html">Movies per year, by plataform</a></li>
+               <li><a href="country.html">Movies per country/language</a></li>
+               <li><a href="age.html">Movies by age range</a></li>
+            </ul>
+         </div>
+      </nav>
+      <div id="content">
+         <!-- Start header - menu -->
+         <header class="top-header">
+            <div class="container">
+               <div class="row">
+                  <div class="col-sm-6">
+                     <div class="logo_main">
+                        <br>
+                        <h2><strong class=theme_color">Movie</strong>DB</h2>
+                        <!--<a href="index.html"><img src="images/main_logo.png" /></a>-->
+                     </div>
+                  </div>
+                  <div class="col-sm-6">
+                     <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn"><img src="images/menu_icon.png"></button>
+                  </div>
+               </div>
+            </div>
+         </header>
+         <!-- End header -->
+         <!-- Start Banner -->
+         <div class="ulockd-home-slider">
+            <div class="container-fluid">
+               <div class="row">
+                  <div class="pogoSlider" id="js-main-slider">
+                     <div class="pogoSlider-slide" style="background-image:url(images/slider1.jpg);">
+                        <div class="container">
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="slide_text" style="margin-right: 100">
+                                    <br>
+                                    <br>
+                                    <h6>Discover your plataform at</h6>
+                                    <h3>Movie</h3>
+                                    <h4>DATABASE</h4>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="pogoSlider-slide" style="background-image:url(images/slider2.jpg);">
+                        <div class="container">
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="slide_text">
+                                    <br>
+                                    <br>
+                                    <h6>Discover your plataform at</h6>
+                                    <h3>Movie</h3>
+                                    <h4>Database</h4>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="pogoSlider-slide" style="background-image:url(images/slider3.jpg);">
+                        <div class="container">
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="slide_text">
+                                    <br>
+                                    <br>
+                                    <h6>Discover your plataform at</h6>
+                                    <h3>Movie</h3>
+                                    <h4>Database</h4>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="pogoSlider-slide" style="background-image:url(images/slider4.jpg);">
+                        <div class="container">
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="slide_text">
+                                    <br>
+                                    <br>
+                                    <h6>Discover your plataform at</h6>
+                                    <h3>Movie</h3>
+                                    <h4>Database</h4>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <!-- .pogoSlider -->
+               </div>
+            </div>
+         </div>
+         <!-- End Banner -->
+         <!-- section -->
+         <div class="section about_section layout_padding dash_bg">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-12">
+                     <div class="full">
+                        <div class="heading_main text_align_center">
+                           <h2>With MovieDB, you can</h2>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                     <div class="full feature_box">
+                         <div class="full">
+                            <h4>Compare plataforms</h4>
+                         </div>
+                         <div class="full">
+                           <p>You'll be able to compare certain aspects between plataforms (eg. which one has more movies)</p>
+                         </div>
+                     </div>
+                  </div>
+                  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                     <div class="full feature_box">
+                         <div class="full">
+                            <h4>Check reviews</h4>
+                         </div>
+                         <div class="full">
+                           <p>Discover the best reviews in IMDB and Rotten Tomatoes and grouped by category</p>
+                         </div>
+                     </div>
+                  </div>
+                  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                     <div class="full feature_box">
+                         <div class="full">
+                            <h4>Know more about movies'</h4>
+                         </div>
+                         <div class="full">
+                           <p>Runtime, genres, country, languages and much more!</p>
+                         </div>
+                     </div>
+                  </div>
+                  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+                     <div class="full feature_box">
+                         <div class="full">
+                            <h4>Discover which one is better for you!</h4>
+                         </div>
+                         <div class="full">
+                           <p>Chose the plataform that suits you better</p>
+                         </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- end section -->
+         <!-- section -->
+         <div class="section about_section layout_padding padding_top_0">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-12">
+                        <div class="full">
+                           <div class="heading_main text_align_center margin-bottom_30">
+                              <h2><strong class="small theme_color">Movies available</strong><br>By plataform</h2>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-lg-10 offset-lg-1">
+                        <div class="full text_align_center">
+                            <p>Insert chart</p>
+                        </div>
+                     </div>
+                  </div>
+                  <!--
+                  <div class="row">
+                     <div class="col-md-12">
+                        <div class="full text_align_center">
+                          <img class="img-responsive" src="images/video_img.jpg" alt="#" />
+                        </div>
+                        <div class="full center">
+                           <a class="readmore_bt" href="about.html">Read More</a>
+                         </div>
+                     </div>
+                  </div>
+                  -->
+               </div>
+            </div>
+            <!-- end section -->
+         <!-- section -->
+         <div class="section about_section layout_padding padding_top_0">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-12">
+                     <div class="full">
+                        <div class="heading_main text_align_center">
+                           <h2 class="margin-bottom_30"><strong class="small theme_color">Discover the main genres and release years</strong><br>For all four plataforms</h2>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                     <div class="full">
+                        <div class="heading_small">
+                          <h4>GENRES</h4>
+                        </div>
+                        <p>Insert chart</p>
+                      </div>
+                      <!--
+                      <div class="full margin-top_30">
+                        <a class="readmore_bt" href="about.html">Read More</a>
+                      </div>
+                      -->
+                  </div>
+                  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                     <div class="heading_small">
+                        <h4>RELEASE YEARS</h4>
+                     </div>
+                     <p>Insert chart</p>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <!-- end section -->
+         
+         <!-- Start Footer -->
+         <footer class="footer-box">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-12">
+                     <div class="full">
+                        <div class="heading_main text_align_center white_fonts margin-bottom_30">
+                           <h2>VI course - work done by</h2>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="row">
+                  <div class="col-md-6">
+                     <p>Ana Sofia Fernandes<br><small>nmec 88739</small></p>
+                  </div>
+                  <div class="col-md-6">
+                     <p>Pedro Oliveira<br><small>nmec 89155</small></p>
+                  </div>
+               </div>
+            </div>
+         </footer>
+         <!-- End Footer -->
+         <div class="footer_bottom">
+            <div class="container">
+               <div class="row">
+                  <div class="col-12">
+                     <p class="crp">© Copyrights 2019 design by <a href="https://html.design" title="Free Website Templates">Free Website Templates</a></p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <a href="#" id="scroll-to-top" class="hvr-radial-out"><i class="fa fa-angle-up"></i></a>
+      <!-- ALL JS FILES -->
+      <script src="js/jquery.min.js"></script>
+      <script src="js/popper.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <!-- ALL PLUGINS -->
+      <script src="js/jquery.magnific-popup.min.js"></script>
+      <script src="js/jquery.pogo-slider.min.js"></script>
+      <script src="js/slider-index.js"></script>
+      <script src="js/smoothscroll.js"></script>
+      <script src="js/form-validator.min.js"></script>
+      <script src="js/contact-form-script.js"></script>
+      <script src="js/isotope.min.js"></script>
+      <script src="js/images-loded.min.js"></script>
+      <script src="js/custom.js"></script>
+      <!-- End Google Map -->
+      <script>
+         $(document).ready(function() {
+           $('#sidebarCollapse').on('click', function() {
+             $('#sidebar, #content').toggleClass('active');
+             $('.collapse.in').toggleClass('in');
+             $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+           });
+         });
+      </script>
+   </body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+   <!-- Basic -->
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- Mobile Metas -->
+      <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+      <!-- Site Metas -->
+      <title>Digital Marketing - Responsive HTML5 Template</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- Site Icons -->
+      <link rel="shortcut icon" href="#" type="image/x-icon" />
+      <link rel="apple-touch-icon" href="#" />
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="css/bootstrap.min.css" />
+      <!-- Pogo Slider CSS -->
+      <link rel="stylesheet" href="css/pogo-slider.min.css" />
+      <!-- Site CSS -->
+      <link rel="stylesheet" href="css/style.css" />
+      <!-- Responsive CSS -->
+      <link rel="stylesheet" href="css/responsive.css" />
+      <!-- Custom CSS -->
+      <link rel="stylesheet" href="css/custom.css" />
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+      <![endif]-->
+      <style>
+         /* Style the tab */
+         .tab {
+            overflow: hidden;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+         }
+         
+         /* Style the buttons inside the tab */
+         .tab button {
+            background-color: inherit;
+            float: left;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            padding: 14px 16px;
+            transition: 0.3s;
+            font-size: 17px;
+         }
+         
+         /* Change background color of buttons on hover */
+         .tab button:hover {
+            background-color: #ddd;
+         }
+         
+         /* Create an active/current tablink class */
+         .tab button.active {
+            background-color: #ccc;
+         }
+         
+         /* Style the tab content */
+         .tabcontent {
+            display: none;
+            padding: 6px 12px;
+            border: 1px solid #ccc;
+            border-top: none;
+         }
+      </style>
+   </head>
+   <body id="about" class="inner_page" data-spy="scroll" data-target="#navbar-wd" data-offset="98">
+      <!-- LOADER -->
+      <div id="preloader">
+         <div class="loader">
+            <img src="images/loader.gif" alt="#" />
+         </div>
+      </div>
+      <!-- END LOADER -->
+      <div class="wrapper">
+      <nav id="sidebar">
+         <div class="menu_section">
+            <ul>
+               <li><a href="index.html">Home</a></li>
+               <li><a href="movieReviews.html">Movies Reviews</a></li>
+               <li><a href="movieRuntime.html">Movies Runtime</a></li>
+               <li><a href="genre.html">Genres by plataform</a></li>
+               <li><a href="year.html">Movies per year, by plataform</a></li>
+               <li><a href="country.html">Movies per country/language</a></li>
+               <li><a href="age.html">Movies by age range</a></li>
+            </ul>
+         </div>
+      </nav>
+      <div id="content">
+         <!-- Start header -->
+         <header class="top-header">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-sm-6">
+                        <div class="logo_main">
+                           <br>
+                           <h2><strong class=theme_color">Movie</strong>DB</h2>
+                           <!--<a href="index.html"><img src="images/main_logo.png" /></a>-->
+                        </div>
+                     </div>
+                     <div class="col-sm-6">
+                        <button type="button" id="sidebarCollapse" class="btn btn-info navbar-btn"><img src="images/menu_icon.png"></button>
+                     </div>
+                  </div>
+               </div>
+            </header>
+         <!-- End header -->
+         <!-- Start Banner -->
+         <!-- section -->
+         <div class="section about_section layout_padding dash_bg">
+            <div class="container">
+               <div class="row">
+                     <div class="col-md-12">
+                           <div class="full">
+                              <div class="heading_main text_align_center">
+                                 <h2 class="margin-bottom_30">Movie reviews<br><strong class="small theme_color">By plataform</strong></h2>
+                              </div>
+                     </div>
+                  <div class="col-md-12">
+                     <!-- Tab links -->
+                     <div class="tab">
+                        <button class="tablinks" onclick="openCity(event, 'London')">General</button>
+                        <button class="tablinks" onclick="openCity(event, 'Paris')">Netflix</button>
+                        <button class="tablinks" onclick="openCity(event, 'Tokyo')">Amazon Prime Video</button>
+                        <button class="tablinks" onclick="openCity(event, 'Tokyo')">Hulu</button>
+                        <button class="tablinks" onclick="openCity(event, 'Tokyo')">Disney+</button>
+                     </div>
+                  </div>
+                  
+               </div>               
+            </div>
+         </div>
+
+         <!-- Tab content -->
+         <div id="London" class="tabcontent">
+               <h3>London</h3>
+               <p>London is the capital city of England.</p>
+            </div>
+            
+            <div id="Paris" class="tabcontent">
+               <h3>Paris</h3>
+               <p>Paris is the capital of France.</p>
+            </div>
+            
+            <div id="Tokyo" class="tabcontent">
+               <h3>Tokyo</h3>
+               <p>Tokyo is the capital of Japan.</p>
+         </div>
+
+
+         <!-- Start Footer -->
+         <footer class="footer-box">
+               <div class="container">
+                  <div class="row">
+                     <div class="col-md-12">
+                        <div class="full">
+                           <div class="heading_main text_align_center white_fonts margin-bottom_30">
+                              <h2>VI course - work done by</h2>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="row">
+                     <div class="col-md-6">
+                        <p>Ana Sofia Fernandes<br><small>nmec 88739</small></p>
+                     </div>
+                     <div class="col-md-6">
+                        <p>Pedro Oliveira<br><small>nmec 89155</small></p>
+                     </div>
+                  </div>
+               </div>
+            </footer>
+            <!-- End Footer -->
+         <div class="footer_bottom">
+            <div class="container">
+               <div class="row">
+                  <div class="col-12">
+                     <p class="crp">© Copyrights 2019 design by <a href="https://html.design" title="Free Website Templates">Free Website Templates</a></p>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+      <a href="#" id="scroll-to-top" class="hvr-radial-out"><i class="fa fa-angle-up"></i></a>
+      <!-- ALL JS FILES -->
+      <script src="js/jquery.min.js"></script>
+      <script src="js/popper.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <!-- ALL PLUGINS -->
+      <script src="js/jquery.magnific-popup.min.js"></script>
+      <script src="js/jquery.pogo-slider.min.js"></script>
+      <script src="js/slider-index.js"></script>
+      <script src="js/smoothscroll.js"></script>
+      <script src="js/form-validator.min.js"></script>
+      <script src="js/contact-form-script.js"></script>
+      <script src="js/isotope.min.js"></script>
+      <script src="js/images-loded.min.js"></script>
+      <script src="js/custom.js"></script>
+      <!-- End Google Map -->
+      <script>
+         $(document).ready(function() {
+           $('#sidebarCollapse').on('click', function() {
+             $('#sidebar, #content').toggleClass('active');
+             $('.collapse.in').toggleClass('in');
+             $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+           });
+         });
+      </script>
+     
+   </body>
+</html>
