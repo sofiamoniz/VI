@@ -10,13 +10,13 @@ d3.csv("/data/data.csv", function(data){
       if(d.Netflix == 1){
          NetflixTitle += 1                  
       } 
-      else if(d.Hulu == 1){
+      if(d.Hulu == 1){
          HuluTitle += 1                  
       } 
-      else if(d.PrimeVideo == 1){
+      if(d.PrimeVideo == 1){
          PrimeTitle += 1
       }
-      else if(d.Disney == 1){
+      if(d.Disney == 1){
          DisneyTitle += 1
       }
    }); 
