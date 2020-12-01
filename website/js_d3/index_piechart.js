@@ -76,7 +76,7 @@ d3.csv("/data/data.csv", function(data){
    .data(data_ready)
    .enter()
    .append('text')
-   .text(function(d){ return d.data.key +  " "+d.data.value })
+   .text(function(d){ return d.data.key +  "- "+d.data.value })
    .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")"+
             "rotate(" + getAngle(d) + ")";  })
    .style("text-anchor", "middle")
