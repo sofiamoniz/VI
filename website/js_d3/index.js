@@ -312,5 +312,4 @@ d3.csv("/data/data.csv", function(data){
       var midangle = d.startAngle + (d.endAngle - d.startAngle) / 2
       return (midangle < Math.PI ? 'start' : 'end')
    })
-   
 });
