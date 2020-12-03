@@ -1,23 +1,10 @@
 d3.csv("/data/data.csv", function(data){
-    var dictCountries = {}
     var dictLangNetflix = {}
     var dictLangPrime = {}
     var dictLangHulu = {}
     var dictLangDisney = {}
 
-
-    data.forEach(function(d) {
-        countries = d.Country.split(",")
-        countries.forEach(function(g) {
-            if(g != ""){
-                if (g in dictCountries) {
-                    dictCountries[g] += 1
-                }
-                else{
-                    dictCountries[g] = 1
-                }
-            }         
-        });
+    data.forEach(function(d) {        
         if(d.Netflix == 1){
             languages = d.Language.split(",")
             languages.forEach(function(g) {
