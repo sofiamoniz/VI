@@ -89,8 +89,8 @@
    <body id="about" class="inner_page" data-spy="scroll" data-target="#navbar-wd" data-offset="98">
       <!--D3 import-->
       <script src="http://d3js.org/d3.v4.js"></script>
-      <script src="https://d3js.org/d3-scale-chromatic.v1.min.js"></script>
-      <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>   
+      <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3-scale-radial.js"></script>
+      
 
       <!--D3 charts-->
       <script src="/js_d3/country.js"></script>
@@ -164,9 +164,8 @@
                <div class="container">                 
                   <div class="row">
                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <div width="960" height="600" id="generalCountry" class="full heading_small">
+                        <div id="generalCountry" class="col-lg-10 offset-lg-1">
                            <h4>General</h4>
-                           <svg id="my_dataviz" width="400" height="300"></svg>
                          </div>
                      </div>
                   </div>
@@ -176,12 +175,39 @@
          <div id="Language" class="tabcontent section about_section layout_padding padding_top_0">
                <div class="container">                 
                   <div class="row">
-                   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <div class="full">
-                           <p>language</p>
+                   <div class=" text_align_center col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div id="netflixLanguage" class="heading_small">
+                           <h4>Netflix - top 50</h4>
                          </div>
                      </div>
                   </div>
+               </div>
+               <div class="container">                 
+                     <div class="row">
+                      <div class=" text_align_center col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                           <div id="primeLanguage" class="heading_small">
+                              <h4>Prime - top 50</h4>
+                            </div>
+                        </div>
+                     </div>
+               </div>
+               <div class="container">                 
+                     <div class="row">
+                      <div class=" text_align_center col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                           <div id="huluLanguage" class="heading_small">
+                              <h4>Hulu - top 50</h4>
+                            </div>
+                        </div>
+                     </div>
+               </div>
+               <div class="container">                 
+                     <div class="row">
+                      <div class=" text_align_center col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                           <div id="disneyLanguage" class="heading_small">
+                              <h4>Disney - top 50</h4>
+                            </div>
+                        </div>
+                     </div>
                </div>
          </div>
 

@@ -295,7 +295,7 @@ d3.csv("/data/data.csv", function(data){
 
     // sort data
     genre_value.sort(function(b, a) {
-    return a.value - b.value;
+        return a.value - b.value;
     });
 
     // Add X axis
