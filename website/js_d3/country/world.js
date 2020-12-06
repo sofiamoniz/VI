@@ -88,7 +88,7 @@ d3.csv("/data/data.csv", function(data){
                 })
                 .on("mousemove", function(d) {
                     Tooltip
-                      .html("Country: "+ d.country + "<br>" + "nº movies: " + d.val)
+                      .html("Country: "+ d.country + "<br>" + "Nº movies: " + d.val)
                       .style("left", (d3.mouse(this)[0]+10) + "px")
                       .style("top", (d3.mouse(this)[1]) + "px")
                 })
