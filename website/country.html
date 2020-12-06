@@ -84,17 +84,24 @@
                text-anchor: start;
                font-weight: bold;
          }
+         #netflixCountry { height: 400px; }
       </style>
    </head>
    <body id="about" class="inner_page" data-spy="scroll" data-target="#navbar-wd" data-offset="98">
       <!--D3 import-->
       <script src="http://d3js.org/d3.v4.js"></script>
       <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3-scale-radial.js"></script>
+      <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
       
 
       <!--D3 charts-->
       <script src="/js_d3/country/languages.js"></script>
       <script src="/js_d3/country/world.js"></script>
+
+      <!-- Load Leaflet -->
+      <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin=""/>
+      <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
+
 
 
       <!-- LOADER -->
@@ -166,9 +173,11 @@
                <div class="container">                 
                   <div class="row">
                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="heading_small">
+                              <h4>Netflix</h4>
+                        </div>
                         <div id="netflixCountry" class="col-lg-10 offset-lg-1">
-                           <h4>Netflix</h4>
-                         </div>
+                        </div>
                      </div>
                   </div>
                </div>
