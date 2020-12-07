@@ -78,6 +78,16 @@ d3.csv("/data/data.csv", function(data){
    var getAngle = function (d) {
       return (180 / Math.PI * (d.startAngle + d.endAngle) / 2 - 90);
    };
+
+   var tooltip = d3.select("body")
+    .append("div")
+    .style("position", "absolute")
+    .style("z-index", "10")
+    .style("visibility", "hidden")
+    .style("color", "#fc301e")
+    .style("background-color", "#ffffff")
+    .text("a simple tooltip");
+
    // Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
    svg
    .selectAll('mySlices')
@@ -89,6 +99,9 @@ d3.csv("/data/data.csv", function(data){
       .attr("stroke", "black")
       .style("stroke-width", "2px")
       .style("opacity", 0.7)
+      .on("mouseover", function(d){tooltip.text(d.data.key+": "+d.value+" movies"); return tooltip.style("visibility", "visible");})
+      .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
+      .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
 
    // Now add the annotation. Use the centroid method to get the best coordinates
    svg
@@ -96,12 +109,14 @@ d3.csv("/data/data.csv", function(data){
    .data(data_ready)
    .enter()
    .append('text')
-   .text(function(d){ return d.data.key +  "- "+d.data.value })
+   //.text(function(d){ return d.data.key +  "- "+d.data.value })
+   .text(function(d){ return d.data.key})
    .attr("transform", function(d) { return "translate(" + arcGenerator.centroid(d) + ")"+
             "rotate(" + getAngle(d) + ")";  })
    .style("text-anchor", "middle")
    .style("font-size", 18)
    .attr("dy", 5)
+   
    
    ////////////////////////////////////////////Genres//////////////////////////////////////////////////////////////
    
@@ -170,6 +185,9 @@ d3.csv("/data/data.csv", function(data){
    .attr("stroke", "white")
    .style("stroke-width", "2px")
    .style("opacity", 0.7)
+   .on("mouseover", function(d){tooltip.text(d.data.key+": "+d.value+" movies"); return tooltip.style("visibility", "visible");})
+   .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
+   .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
 
    // Add the polylines between chart and labels:
    svg
@@ -274,6 +292,9 @@ d3.csv("/data/data.csv", function(data){
    .attr("stroke", "white")
    .style("stroke-width", "2px")
    .style("opacity", 0.7)
+   .on("mouseover", function(d){tooltip.text(d.data.key+": "+d.value+" movies"); return tooltip.style("visibility", "visible");})
+   .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
+   .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
 
    // Add the polylines between chart and labels:
    svg

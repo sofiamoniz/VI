@@ -95,18 +95,14 @@
       
 
       <!--D3 charts-->
-      <script src="/js_d3/country/languages.js"></script>
       <script src="/js_d3/country/worldNetflix.js"></script>
       <script src="/js_d3/country/worldDisney.js"></script>
       <script src="/js_d3/country/worldHulu.js"></script>
       <script src="/js_d3/country/worldPrime.js"></script>
 
-
       <!-- Load Leaflet -->
       <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.4/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA==" crossorigin=""/>
       <script src="https://unpkg.com/leaflet@1.3.4/dist/leaflet.js" integrity="sha512-nMMmRyTVoLYqjP9hrbed9S+FzjZHW5gY1TWCHA5ckwXZBadntCNs8kEqAWdrb9O7rxbCaA4lKTIWjDXZxflOcA==" crossorigin=""></script>
-
-
 
       <!-- LOADER -->
       <div id="preloader">
@@ -156,14 +152,16 @@
                      <div class="col-md-12">
                            <div class="full">
                               <div class="heading_main text_align_center">
-                                 <h2 class="margin-bottom_30">Movie genres<br><strong class="small theme_color">General and by platform</strong></h2>
+                                 <h2 class="margin-bottom_30">Movies across the world<br><strong class="small theme_color">By platform</strong></h2>
                               </div>
                      </div>
                   <div class="col-md-12">
                      <!-- Tab links -->
                      <div class="tab">
-                        <button class="tablinks" onclick="openChart(event, 'Country')" id="defaultOpen">Movies per country</button>
-                        <button class="tablinks" onclick="openChart(event, 'Language')">Movies per language</button>
+                        <button class="tablinks" onclick="openChart(event, 'Netflix')" id="defaultOpen">Netflix</button>
+                        <button class="tablinks" onclick="openChart(event, 'Prime')">Amazon Prime Video</button>
+                        <button class="tablinks" onclick="openChart(event, 'Hulu')">Hulu</button>
+                        <button class="tablinks" onclick="openChart(event, 'Disney')">Disney+</button>
                      </div>
                   </div>
                   
@@ -173,89 +171,47 @@
 
          <!-- Tab content -->         
         
-         <div id="Country" class="tabcontent section about_section layout_padding padding_top_0">
-               <div class="container">                 
-                  <div class="row">
-                   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <div class="heading_small">
-                              <h4>Netflix</h4>
+         <div id="Netflix" class="tabcontent section about_section layout_padding padding_top_0">
+            <div class="container">                 
+               <div class="row">
+                  <div class=" text_align_center col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                     <div id="netflixCountry" class="heading_small">
                         </div>
-                        <div id="netflixCountry" class="col-lg-10 offset-lg-1">
-                        </div>
-                     </div>
                   </div>
                </div>
+            </div>
+         </div>
+
+         <div id="Prime" class="tabcontent section about_section layout_padding padding_top_0">
                <div class="container">                 
                   <div class="row">
-                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <div class="heading_small">
-                              <h4>Prime</h4>
-                        </div>
-                        <div id="primeCountry" class="col-lg-10 offset-lg-1">
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="container">                 
-                  <div class="row">
-                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <div class="heading_small">
-                              <h4>Hulu</h4>
-                        </div>
-                        <div id="huluCountry" class="col-lg-10 offset-lg-1">
-                        </div>
-                     </div>
-                  </div>
-               </div>
-               <div class="container">                 
-                  <div class="row">
-                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <div class="heading_small">
-                              <h4>Disney</h4>
-                        </div>
-                        <div id="disneyCountry" class="col-lg-10 offset-lg-1">
-                        </div>
+                     <div class=" text_align_center col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div id="primeCountry" class="heading_small">
+                           </div>
                      </div>
                   </div>
                </div>
          </div>
-         
-         <div id="Language" class="tabcontent section about_section layout_padding padding_top_0">
+
+         <div id="Hulu" class="tabcontent section about_section layout_padding padding_top_0">
                <div class="container">                 
                   <div class="row">
-                   <div class=" text_align_center col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <div id="netflixLanguage" class="heading_small">
-                           <h4>Netflix - top 50</h4>
-                         </div>
+                     <div class=" text_align_center col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div id="huluCountry" class="heading_small">
+                           </div>
                      </div>
                   </div>
                </div>
+         </div>
+
+         <div id="Disney" class="tabcontent section about_section layout_padding padding_top_0">
                <div class="container">                 
-                     <div class="row">
-                      <div class=" text_align_center col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                           <div id="primeLanguage" class="heading_small">
-                              <h4>Prime - top 50</h4>
-                            </div>
-                        </div>
+                  <div class="row">
+                     <div class=" text_align_center col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div id="disneyCountry" class="heading_small">
+                           </div>
                      </div>
-               </div>
-               <div class="container">                 
-                     <div class="row">
-                      <div class=" text_align_center col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                           <div id="huluLanguage" class="heading_small">
-                              <h4>Hulu - top 50</h4>
-                            </div>
-                        </div>
-                     </div>
-               </div>
-               <div class="container">                 
-                     <div class="row">
-                      <div class=" text_align_center col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                           <div id="disneyLanguage" class="heading_small">
-                              <h4>Disney - top 50</h4>
-                            </div>
-                        </div>
-                     </div>
+                  </div>
                </div>
          </div>
 
@@ -306,7 +262,9 @@
            }
            document.getElementById(chartPlatform).style.display = "block";
            evt.currentTarget.className += " active";
+           
          }
+         
          // Get the element with id="defaultOpen" and click on it
          document.getElementById("defaultOpen").click();
       </script>
