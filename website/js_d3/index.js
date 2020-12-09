@@ -141,7 +141,7 @@ d3.csv("/data/data.csv", function(data){
    // set the dimensions and margins of the graph
    var width = 550
    height = 550
-   margin = 50
+   margin = 58
    // The radius of the pieplot is half the width or half the height (smallest one). I subtract a bit of margin.
    var radius = Math.min(width, height) / 2 - margin
 
@@ -248,7 +248,7 @@ d3.csv("/data/data.csv", function(data){
    // set the dimensions and margins of the graph
    var width = 550
    height = 550
-   margin = 50
+   margin = 58
    // The radius of the pieplot is half the width or half the height (smallest one). I subtract a bit of margin.
    var radius = Math.min(width, height) / 2 - margin
 
