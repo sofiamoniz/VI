@@ -65,7 +65,7 @@ d3.csv("/data/data.csv", function(data){
         .append("circle")
             .attr("cx", function(d){ return mapPrime.latLngToLayerPoint([d.lat, d.long]).x })
             .attr("cy", function(d){ return mapPrime.latLngToLayerPoint([d.lat, d.long]).y })
-            .attr("r", 14)
+            .attr("r", function(d){ return Math.log2(d.val)/Math.log2(1.5) + 1})
             .style("fill", "#fc301e")
             .attr("stroke", "#fc301e")
             .attr("stroke-width", 3)
@@ -88,7 +88,7 @@ d3.csv("/data/data.csv", function(data){
 
         // Function that update circle position if something change
         function updatePrime() {
-        d3.selectAll("circle")
+        d3.select("#primeCountry").selectAll("circle")
         .attr("cx", function(d){ return mapPrime.latLngToLayerPoint([d.lat, d.long]).x })
         .attr("cy", function(d){ return mapPrime.latLngToLayerPoint([d.lat, d.long]).y })
         .attr("pointer-events","visible")
