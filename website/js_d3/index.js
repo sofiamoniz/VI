@@ -80,13 +80,14 @@ d3.csv("/data/data.csv", function(data){
    };
 
    var tooltip = d3.select("body")
-    .append("div")
-    .style("position", "absolute")
-    .style("z-index", "10")
-    .style("visibility", "hidden")
-    .style("color", "#fc301e")
-    .style("background-color", "#ffffff")
-    .text("a simple tooltip");
+   .append("div")
+   .attr("class", "tooltip")
+   .style("opacity", 1)
+   .style("background-color", "white")
+   .style("border", "solid")
+   .style("border-width", "2px")
+   .style("border-radius", "5px")
+   .style("padding", "5px")
 
    // Build the pie chart: Basically, each part of the pie is a path that we build using the arc function.
    svg
@@ -138,9 +139,9 @@ d3.csv("/data/data.csv", function(data){
    });
 
    // set the dimensions and margins of the graph
-   var width = 450
-   height = 450
-   margin = 40
+   var width = 550
+   height = 550
+   margin = 50
    // The radius of the pieplot is half the width or half the height (smallest one). I subtract a bit of margin.
    var radius = Math.min(width, height) / 2 - margin
 
@@ -214,7 +215,7 @@ d3.csv("/data/data.csv", function(data){
    .enter()
    .append('text')
    .text( function(d) {return d.data.key } )
-   .style("font-size", 7)
+   .style("font-size", 10)
    .style("font-weight", "bold")
    .attr('transform', function(d) {
       var pos = outerArc.centroid(d);
@@ -245,9 +246,9 @@ d3.csv("/data/data.csv", function(data){
       data[g[0]]=g[1]
    });
    // set the dimensions and margins of the graph
-   var width = 450
-   height = 450
-   margin = 40
+   var width = 550
+   height = 550
+   margin = 50
    // The radius of the pieplot is half the width or half the height (smallest one). I subtract a bit of margin.
    var radius = Math.min(width, height) / 2 - margin
 
