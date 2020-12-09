@@ -511,7 +511,7 @@ d3.csv("/data/data.csv", function(data){
     .enter()
     .append("rect")
     .attr("class", "bar netflix")
-    .style("fill","blue")
+    .style("fill","#89CFF0")
     .attr("x", d => xScale1('netflix'))
     .attr("y", d => yScale(d.netflix))
     .attr("width", xScale1.bandwidth())
