@@ -121,7 +121,7 @@ d3.csv("/data/data.csv", function(data){
         .data(words)
     .enter().append("text")
         .style("font-size", function(d) { return d.size; })
-        .style("fill", "#fc301e")
+        .style("fill", "#ff4c4c")
         .attr("text-anchor", "middle")
         .style("font-family", "Impact")
         .attr("transform", function(d) {
@@ -172,6 +172,7 @@ d3.csv("/data/data.csv", function(data){
     svg.append("g")
     .call(d3.axisLeft(y))
 
+
     // Lines
     svg.selectAll("myline")
     .data(genre_value)
@@ -183,13 +184,15 @@ d3.csv("/data/data.csv", function(data){
     .attr("y2", function(d) { return y(d.genre); })
     .attr("stroke", "grey")
 
-    
     var tooltip = d3.select("body")
-    .append("div")
-    .style("position", "absolute")
-    .style("z-index", "10")
-    .style("visibility", "hidden")
-    .text("a simple tooltip");
+        .append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 1)
+        .style("background-color", "white")
+        .style("border", "solid")
+        .style("border-width", "2px")
+        .style("border-radius", "5px")
+        .style("padding", "5px")
 
     // Circles
     svg.selectAll("mycircle")
@@ -199,9 +202,9 @@ d3.csv("/data/data.csv", function(data){
     .attr("cx", function(d) { return x(d.value); })
     .attr("cy", function(d) { return y(d.genre); })
     .attr("r", "7")
-    .style("fill", "#fc301e")
+    .style("fill", "#ff4c4c")
     .attr("stroke", "black")
-    .on("mouseover", function(d){tooltip.text(d.value); return tooltip.style("visibility", "visible");})
+    .on("mouseover", function(d){tooltip.text(d.genre+"-"+d.value+" movies"); return tooltip.style("visibility", "visible");})
     .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
     .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
 
@@ -266,7 +269,7 @@ d3.csv("/data/data.csv", function(data){
         .data(words)
     .enter().append("text")
         .style("font-size", function(d) { return d.size; })
-        .style("fill", "#fc301e")
+        .style("fill", "#ff4c4c")
         .attr("text-anchor", "middle")
         .style("font-family", "Impact")
         .attr("transform", function(d) {
@@ -328,13 +331,6 @@ d3.csv("/data/data.csv", function(data){
     .attr("y2", function(d) { return y(d.genre); })
     .attr("stroke", "grey")
 
-    
-    var tooltip = d3.select("body")
-    .append("div")
-    .style("position", "absolute")
-    .style("z-index", "10")
-    .style("visibility", "hidden")
-    .text("a simple tooltip");
 
     // Circles
     svg.selectAll("mycircle")
@@ -344,9 +340,9 @@ d3.csv("/data/data.csv", function(data){
     .attr("cx", function(d) { return x(d.value); })
     .attr("cy", function(d) { return y(d.genre); })
     .attr("r", "7")
-    .style("fill", "#fc301e")
+    .style("fill", "#ff4c4c")
     .attr("stroke", "black")
-    .on("mouseover", function(d){tooltip.text(d.value); return tooltip.style("visibility", "visible");})
+    .on("mouseover", function(d){tooltip.text(d.genre+"-"+d.value+" movies"); return tooltip.style("visibility", "visible");})
     .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
     .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
 
@@ -411,7 +407,7 @@ d3.csv("/data/data.csv", function(data){
         .data(words)
     .enter().append("text")
         .style("font-size", function(d) { return d.size; })
-        .style("fill", "#fc301e")
+        .style("fill", "#ff4c4c")
         .attr("text-anchor", "middle")
         .style("font-family", "Impact")
         .attr("transform", function(d) {
@@ -474,12 +470,6 @@ d3.csv("/data/data.csv", function(data){
     .attr("stroke", "grey")
 
     
-    var tooltip = d3.select("body")
-    .append("div")
-    .style("position", "absolute")
-    .style("z-index", "10")
-    .style("visibility", "hidden")
-    .text("a simple tooltip");
 
     // Circles
     svg.selectAll("mycircle")
@@ -489,9 +479,9 @@ d3.csv("/data/data.csv", function(data){
     .attr("cx", function(d) { return x(d.value); })
     .attr("cy", function(d) { return y(d.genre); })
     .attr("r", "7")
-    .style("fill", "#fc301e")
+    .style("fill", "#ff4c4c")
     .attr("stroke", "black")
-    .on("mouseover", function(d){tooltip.text(d.value); return tooltip.style("visibility", "visible");})
+    .on("mouseover", function(d){tooltip.text(d.genre+"-"+d.value+" movies"); return tooltip.style("visibility", "visible");})
     .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
     .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
 
@@ -556,7 +546,7 @@ d3.csv("/data/data.csv", function(data){
         .data(words)
     .enter().append("text")
         .style("font-size", function(d) { return d.size; })
-        .style("fill", "#fc301e")
+        .style("fill", "#ff4c4c")
         .attr("text-anchor", "middle")
         .style("font-family", "Impact")
         .attr("transform", function(d) {
@@ -618,13 +608,7 @@ d3.csv("/data/data.csv", function(data){
     .attr("y2", function(d) { return y(d.genre); })
     .attr("stroke", "grey")
 
-    
-    var tooltip = d3.select("body")
-    .append("div")
-    .style("position", "absolute")
-    .style("z-index", "10")
-    .style("visibility", "hidden")
-    .text("a simple tooltip");
+
 
     // Circles
     svg.selectAll("mycircle")
@@ -634,9 +618,9 @@ d3.csv("/data/data.csv", function(data){
     .attr("cx", function(d) { return x(d.value); })
     .attr("cy", function(d) { return y(d.genre); })
     .attr("r", "7")
-    .style("fill", "#fc301e")
+    .style("fill", "#ff4c4c")
     .attr("stroke", "black")
-    .on("mouseover", function(d){tooltip.text(d.value); return tooltip.style("visibility", "visible");})
+    .on("mouseover", function(d){tooltip.text(d.genre+"-"+d.value+" movies"); return tooltip.style("visibility", "visible");})
     .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
     .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
 }); 

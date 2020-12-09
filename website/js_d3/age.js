@@ -103,6 +103,13 @@ d3.csv("/data/data.csv", function(data){
         .attr("transform", "translate(-10,0)rotate(-45)")
         .style("text-anchor", "end");
 
+    // Add X axis label:
+    svg.append("text")
+    .attr("text-anchor", "end")
+    .attr("x", width)
+    .attr("y", height + margin.top + 20)
+    .text("Age group")
+
     // Add Y axis
     var y = d3.scaleLinear()
     .domain([0, 900])
@@ -110,6 +117,13 @@ d3.csv("/data/data.csv", function(data){
     svg.append("g")
     .call(d3.axisLeft(y));
 
+    // Y axis label:
+    svg.append("text")
+    .attr("text-anchor", "end")
+    .attr("transform", "rotate(-90)")
+    .attr("y", -margin.left+20)
+    .attr("x", -margin.top)
+    .text("Nº of movies")
 
     var tooltip = d3.select("body")
     .append("div")
@@ -129,8 +143,8 @@ d3.csv("/data/data.csv", function(data){
         .attr("y", function(d) { return y(d.Value); })
         .attr("width", x.bandwidth())
         .attr("height", function(d) { return height - y(d.Value); })
-        .attr("fill", "#69b3a2")
-        .on("mouseover", function(d){tooltip.text(d.Value); return tooltip.style("visibility", "visible");})
+        .attr("fill", "#ff4c4c")
+        .on("mouseover", function(d){tooltip.text(d.Value+" movies"); return tooltip.style("visibility", "visible");})
         .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
         .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
 
@@ -173,6 +187,13 @@ d3.csv("/data/data.csv", function(data){
     .selectAll("text")
         .attr("transform", "translate(-10,0)rotate(-45)")
         .style("text-anchor", "end");
+    
+    // Add X axis label:
+    svg.append("text")
+    .attr("text-anchor", "end")
+    .attr("x", width)
+    .attr("y", height + margin.top + 20)
+    .text("Age group");
 
     // Add Y axis
     var y = d3.scaleLinear()
@@ -180,6 +201,14 @@ d3.csv("/data/data.csv", function(data){
     .range([ height, 0]);
     svg.append("g")
     .call(d3.axisLeft(y));
+
+    // Y axis label:
+    svg.append("text")
+    .attr("text-anchor", "end")
+    .attr("transform", "rotate(-90)")
+    .attr("y", -margin.left+15)
+    .attr("x", -margin.top)
+    .text("Nº of movies")
 
 
     var tooltip = d3.select("body")
@@ -200,8 +229,8 @@ d3.csv("/data/data.csv", function(data){
         .attr("y", function(d) { return y(d.Value); })
         .attr("width", x.bandwidth())
         .attr("height", function(d) { return height - y(d.Value); })
-        .attr("fill", "#69b3a2")
-        .on("mouseover", function(d){tooltip.text(d.Value); return tooltip.style("visibility", "visible");})
+        .attr("fill", "#ff4c4c")
+        .on("mouseover", function(d){tooltip.text(d.Value+" movies"); return tooltip.style("visibility", "visible");})
         .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
         .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
 
@@ -252,6 +281,21 @@ d3.csv("/data/data.csv", function(data){
     svg.append("g")
     .call(d3.axisLeft(y));
 
+    // Add X axis label:
+    svg.append("text")
+    .attr("text-anchor", "end")
+    .attr("x", width)
+    .attr("y", height + margin.top + 20)
+    .text("Age group");
+
+    // Y axis label:
+    svg.append("text")
+    .attr("text-anchor", "end")
+    .attr("transform", "rotate(-90)")
+    .attr("y", -margin.left+20)
+    .attr("x", -margin.top)
+    .text("Nº of movies")
+
 
     var tooltip = d3.select("body")
     .append("div")
@@ -271,8 +315,8 @@ d3.csv("/data/data.csv", function(data){
         .attr("y", function(d) { return y(d.Value); })
         .attr("width", x.bandwidth())
         .attr("height", function(d) { return height - y(d.Value); })
-        .attr("fill", "#69b3a2")
-        .on("mouseover", function(d){tooltip.text(d.Value); return tooltip.style("visibility", "visible");})
+        .attr("fill", "#ff4c4c")
+        .on("mouseover", function(d){tooltip.text(d.Value+" movies"); return tooltip.style("visibility", "visible");})
         .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
         .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
     
@@ -324,6 +368,21 @@ d3.csv("/data/data.csv", function(data){
     svg.append("g")
     .call(d3.axisLeft(y));
 
+    // Add X axis label:
+    svg.append("text")
+    .attr("text-anchor", "end")
+    .attr("x", width)
+    .attr("y", height + margin.top + 20)
+    .text("Age group");
+
+    // Y axis label:
+    svg.append("text")
+    .attr("text-anchor", "end")
+    .attr("transform", "rotate(-90)")
+    .attr("y", -margin.left+20)
+    .attr("x", -margin.top)
+    .text("Nº of movies")
+
 
     var tooltip = d3.select("body")
     .append("div")
@@ -343,8 +402,8 @@ d3.csv("/data/data.csv", function(data){
         .attr("y", function(d) { return y(d.Value); })
         .attr("width", x.bandwidth())
         .attr("height", function(d) { return height - y(d.Value); })
-        .attr("fill", "#69b3a2")
-        .on("mouseover", function(d){tooltip.text(d.Value); return tooltip.style("visibility", "visible");})
+        .attr("fill", "#ff4c4c")
+        .on("mouseover", function(d){tooltip.text(d.Value+" movies"); return tooltip.style("visibility", "visible");})
         .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
         .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
 
@@ -411,7 +470,6 @@ d3.csv("/data/data.csv", function(data){
         width = 1000,
         height = 520,
         margin = {top: 20, right: 20, bottom: 40, left: 60},
-
         barPadding = .2,
         axisTicks = {qty: 5, outerSize: 0, dateFormat: '%m-%d'};
     var svg = container
@@ -470,7 +528,7 @@ d3.csv("/data/data.csv", function(data){
     .enter()
     .append("rect")
     .attr("class", "bar prime")
-    .style("fill","red")
+    .style("fill","#ff4c4c")
     .attr("x", d => xScale1('prime'))
     .attr("y", d => yScale(d.prime))
     .attr("width", xScale1.bandwidth())
@@ -539,7 +597,7 @@ d3.csv("/data/data.csv", function(data){
     .attr("transform", "rotate(-90)")
     .attr("y", -margin.left+20)
     .attr("x", -margin.top)
-    .text("Nº of movies")
+    .text("Nº of movies");
 
 
 });
