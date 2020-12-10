@@ -113,7 +113,7 @@ d3.csv("/data/data.csv", function(data){
     .data(lang_value)
     .enter()
     .append("path")
-    .attr("fill", "#69b3a2")
+    .attr("fill", "#ff4c4c")
     .attr("d", d3.arc()     // imagine your doing a part of a donut plot
         .innerRadius(innerRadius)
         .outerRadius(function(d) { return y(d.Value);})
@@ -121,16 +121,19 @@ d3.csv("/data/data.csv", function(data){
         .endAngle(function(d) { return x(d.Country) + x.bandwidth(); })
         .padAngle(0.01)
         .padRadius(innerRadius))
+        .on("mouseover", function(d){tooltip.text(d.Country+": "+d.Value+" movies"); return tooltip.style("visibility", "visible");})
+        .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
+        .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
 
-    var tooltip = d3.select("body")
-    .append("div")
-    .style("position", "absolute")
-    .style("z-index", "10")
-    .style("visibility", "hidden")
-    .style("color", "#fc301e")
-    .style("background-color", "#ffffff")
-    .text("a simple tooltip");
-
+        var tooltip = d3.select("body")
+        .append("div")
+            .attr("class", "tooltip")
+            .style("opacity", 1)
+            .style("background-color", "white")
+            .style("border", "solid")
+            .style("border-width", "2px")
+            .style("border-radius", "5px")
+            .style("padding", "5px")
     // Add the labels
     svg.append("g")
     .selectAll("g")
@@ -142,7 +145,7 @@ d3.csv("/data/data.csv", function(data){
     .append("text")
         .text(function(d){return(d.Country)})
         .attr("transform", function(d) { return (x(d.Country) + x.bandwidth() / 2 + Math.PI) % (2 * Math.PI) < Math.PI ? "rotate(180)" : "rotate(0)"; })
-        .on("mouseover", function(d){tooltip.text(d.Value); return tooltip.style("visibility", "visible");})
+        .on("mouseover", function(d){tooltip.text(d.Country+": "+d.Value+" movies"); return tooltip.style("visibility", "visible");})
         .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
         .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
 
@@ -199,7 +202,7 @@ d3.csv("/data/data.csv", function(data){
     .data(lang_value)
     .enter()
     .append("path")
-    .attr("fill", "#69b3a2")
+    .attr("fill", "#ff4c4c")
     .attr("d", d3.arc()     // imagine your doing a part of a donut plot
         .innerRadius(innerRadius)
         .outerRadius(function(d) { return y(d.Value);})
@@ -207,15 +210,11 @@ d3.csv("/data/data.csv", function(data){
         .endAngle(function(d) { return x(d.Country) + x.bandwidth(); })
         .padAngle(0.01)
         .padRadius(innerRadius))
+        .on("mouseover", function(d){tooltip.text(d.Country+": "+d.Value+" movies"); return tooltip.style("visibility", "visible");})
+        .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
+        .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
 
-    var tooltip = d3.select("body")
-    .append("div")
-    .style("position", "absolute")
-    .style("z-index", "10")
-    .style("visibility", "hidden")
-    .style("color", "#fc301e")
-    .style("background-color", "#ffffff")
-    .text("a simple tooltip");
+       
 
     // Add the labels
     svg.append("g")
@@ -228,7 +227,7 @@ d3.csv("/data/data.csv", function(data){
     .append("text")
         .text(function(d){return(d.Country)})
         .attr("transform", function(d) { return (x(d.Country) + x.bandwidth() / 2 + Math.PI) % (2 * Math.PI) < Math.PI ? "rotate(180)" : "rotate(0)"; })
-        .on("mouseover", function(d){tooltip.text(d.Value); return tooltip.style("visibility", "visible");})
+        .on("mouseover", function(d){tooltip.text(d.Country+": "+d.Value+" movies"); return tooltip.style("visibility", "visible");})
         .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
         .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
 
@@ -284,7 +283,7 @@ d3.csv("/data/data.csv", function(data){
     .data(lang_value)
     .enter()
     .append("path")
-    .attr("fill", "#69b3a2")
+    .attr("fill", "#ff4c4c")
     .attr("d", d3.arc()     // imagine your doing a part of a donut plot
         .innerRadius(innerRadius)
         .outerRadius(function(d) { return y(d.Value);})
@@ -292,15 +291,10 @@ d3.csv("/data/data.csv", function(data){
         .endAngle(function(d) { return x(d.Country) + x.bandwidth(); })
         .padAngle(0.01)
         .padRadius(innerRadius))
+        .on("mouseover", function(d){tooltip.text(d.Country+": "+d.Value+" movies"); return tooltip.style("visibility", "visible");})
+        .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
+        .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
 
-    var tooltip = d3.select("body")
-    .append("div")
-    .style("position", "absolute")
-    .style("z-index", "10")
-    .style("visibility", "hidden")
-    .style("color", "#fc301e")
-    .style("background-color", "#ffffff")
-    .text("a simple tooltip");
 
     // Add the labels
     svg.append("g")
@@ -313,7 +307,7 @@ d3.csv("/data/data.csv", function(data){
     .append("text")
         .text(function(d){return(d.Country)})
         .attr("transform", function(d) { return (x(d.Country) + x.bandwidth() / 2 + Math.PI) % (2 * Math.PI) < Math.PI ? "rotate(180)" : "rotate(0)"; })
-        .on("mouseover", function(d){tooltip.text(d.Value); return tooltip.style("visibility", "visible");})
+        .on("mouseover", function(d){tooltip.text(d.Country+": "+d.Value+" movies"); return tooltip.style("visibility", "visible");})
         .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
         .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
     
@@ -369,7 +363,7 @@ d3.csv("/data/data.csv", function(data){
     .data(lang_value)
     .enter()
     .append("path")
-    .attr("fill", "#69b3a2")
+    .attr("fill", "#ff4c4c")
     .attr("d", d3.arc()     // imagine your doing a part of a donut plot
         .innerRadius(innerRadius)
         .outerRadius(function(d) { return y(d.Value);})
@@ -377,15 +371,10 @@ d3.csv("/data/data.csv", function(data){
         .endAngle(function(d) { return x(d.Country) + x.bandwidth(); })
         .padAngle(0.01)
         .padRadius(innerRadius))
+        .on("mouseover", function(d){tooltip.text(d.Country+": "+d.Value+" movies"); return tooltip.style("visibility", "visible");})
+        .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
+        .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
 
-    var tooltip = d3.select("body")
-    .append("div")
-    .style("position", "absolute")
-    .style("z-index", "10")
-    .style("visibility", "hidden")
-    .style("color", "#fc301e")
-    .style("background-color", "#ffffff")
-    .text("a simple tooltip");
 
     // Add the labels
     svg.append("g")
@@ -398,7 +387,7 @@ d3.csv("/data/data.csv", function(data){
     .append("text")
         .text(function(d){return(d.Country)})
         .attr("transform", function(d) { return (x(d.Country) + x.bandwidth() / 2 + Math.PI) % (2 * Math.PI) < Math.PI ? "rotate(180)" : "rotate(0)"; })
-        .on("mouseover", function(d){tooltip.text(d.Value); return tooltip.style("visibility", "visible");})
+        .on("mouseover", function(d){tooltip.text(d.Country+": "+d.Value+" movies"); return tooltip.style("visibility", "visible");})
         .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
         .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
    

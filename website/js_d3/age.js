@@ -297,14 +297,16 @@ d3.csv("/data/data.csv", function(data){
     .text("Nº of movies")
 
 
+
     var tooltip = d3.select("body")
-    .append("div")
-    .style("position", "absolute")
-    .style("z-index", "10")
-    .style("visibility", "hidden")
-    .style("color", "#fc301e")
-    .style("background-color", "#ffffff")
-    .text("a simple tooltip");
+        .append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 1)
+        .style("background-color", "white")
+        .style("border", "solid")
+        .style("border-width", "2px")
+        .style("border-radius", "5px")
+        .style("padding", "5px")
 
     // Bars
     svg.selectAll("mybar")
