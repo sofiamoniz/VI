@@ -68,6 +68,15 @@
       </style>
    </head>
    <body id="about" class="inner_page" data-spy="scroll" data-target="#navbar-wd" data-offset="98">
+       <!--D3 import-->
+       <script src="http://d3js.org/d3.v4.js"></script>
+       <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3-scale-radial.js"></script>
+       <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+       
+ 
+       <!--D3 charts-->
+       <script src="/js_d3/years.js"></script>
+
       <!-- LOADER -->
       <div id="preloader">
          <div class="loader">
@@ -122,11 +131,11 @@
                   <div class="col-md-12">
                      <!-- Tab links -->
                      <div class="tab">
-                        <button class="tablinks" onclick="openCity(event, 'London')">General</button>
-                        <button class="tablinks" onclick="openCity(event, 'Paris')">Netflix</button>
-                        <button class="tablinks" onclick="openCity(event, 'Tokyo')">Amazon Prime Video</button>
-                        <button class="tablinks" onclick="openCity(event, 'Tokyo')">Hulu</button>
-                        <button class="tablinks" onclick="openCity(event, 'Tokyo')">Disney+</button>
+                        <button class="tablinks" onclick="openChart(event, 'Netflix')" id="defaultOpen">Netflix</button>
+                        <button class="tablinks" onclick="openChart(event, 'Prime')">Amazon Prime Video</button>
+                        <button class="tablinks" onclick="openChart(event, 'Hulu')">Hulu</button>
+                        <button class="tablinks" onclick="openChart(event, 'Disney')">Disney+</button>
+                        <button class="tablinks" onclick="openChart(event, 'All')">All</button>
                      </div>
                   </div>
                   
@@ -135,19 +144,61 @@
          </div>
 
          <!-- Tab content -->
-         <div id="London" class="tabcontent">
-               <h3>London</h3>
-               <p>London is the capital city of England.</p>
+         <!-- Tab content -->         
+        
+         <div id="Netflix" class="tabcontent section about_section layout_padding padding_top_0">
+            <div class="container">                 
+               <div class="row">
+                  <div class=" text_align_center col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                     <div id="netflixYear" class="heading_small">
+                        </div>
+                  </div>
+               </div>
             </div>
-            
-            <div id="Paris" class="tabcontent">
-               <h3>Paris</h3>
-               <p>Paris is the capital of France.</p>
+         </div>
+
+         <div id="Prime" class="tabcontent section about_section layout_padding padding_top_0">
+               <div class="container">                 
+                  <div class="row">
+                     <div class=" text_align_center col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div id="primeYear" class="heading_small">
+                           </div>
+                     </div>
+                  </div>
+               </div>
+         </div>
+
+         <div id="Hulu" class="tabcontent section about_section layout_padding padding_top_0">
+               <div class="container">                 
+                  <div class="row">
+                     <div class=" text_align_center col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div id="huluYear" class="heading_small">
+                           </div>
+                     </div>
+                  </div>
+               </div>
+         </div>
+
+         <div id="Disney" class="tabcontent section about_section layout_padding padding_top_0">
+               <div class="container">                 
+                  <div class="row">
+                     <div class=" text_align_center col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div id="disneyYear" class="heading_small">
+                           </div>
+                     </div>
+                  </div>
+               </div>
+         </div>
+
+         <div id="All" class="tabcontent section about_section layout_padding padding_top_0">
+            <div class="container">                 
+               <div class="row">
+                  <div class=" text_align_center col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                     <div id="allComparison" class="heading_small">
+                        </div>
+                  </div>
+               </div>
             </div>
-            
-            <div id="Tokyo" class="tabcontent">
-               <h3>Tokyo</h3>
-               <p>Tokyo is the capital of Japan.</p>
          </div>
 
 
@@ -201,12 +252,30 @@
       <script src="js/custom.js"></script>
       <!-- End Google Map -->
       <script>
+         function openChart(evt, chartPlatform) {
+           var i, tabcontent, tablinks;
+           tabcontent = document.getElementsByClassName("tabcontent");
+           for (i = 0; i < tabcontent.length; i++) {
+             tabcontent[i].style.display = "none";
+           }
+           tablinks = document.getElementsByClassName("tablinks");
+           for (i = 0; i < tablinks.length; i++) {
+             tablinks[i].className = tablinks[i].className.replace(" active", "");
+           }
+           document.getElementById(chartPlatform).style.display = "block";
+           evt.currentTarget.className += " active";
+         }
+         // Get the element with id="defaultOpen" and click on it
+         document.getElementById("defaultOpen").click();
+      </script>
+
+      <script>
          $(document).ready(function() {
-           $('#sidebarCollapse').on('click', function() {
-             $('#sidebar, #content').toggleClass('active');
-             $('.collapse.in').toggleClass('in');
-             $('a[aria-expanded=true]').attr('aria-expanded', 'false');
-           });
+         $('#sidebarCollapse').on('click', function() {
+            $('#sidebar, #content').toggleClass('active');
+            $('.collapse.in').toggleClass('in');
+            $('a[aria-expanded=true]').attr('aria-expanded', 'false');
+         });
          });
       </script>
      

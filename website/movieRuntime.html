@@ -68,6 +68,14 @@
       </style>
    </head>
    <body id="about" class="inner_page" data-spy="scroll" data-target="#navbar-wd" data-offset="98">
+      <!--D3 import-->
+      <script src="http://d3js.org/d3.v4.js"></script>
+      <script src="https://cdn.jsdelivr.net/gh/holtzy/D3-graph-gallery@master/LIB/d3-scale-radial.js"></script>
+      <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+      
+      <!--D3 charts-->
+      <script src="/js_d3/runtime.js"></script>
+
       <!-- LOADER -->
       <div id="preloader">
          <div class="loader">
@@ -122,8 +130,8 @@
                   <div class="col-md-12">
                      <!-- Tab links -->
                      <div class="tab">
-                        <button class="tablinks" onclick="openCity(event, 'London')">Runtime across time</button>
-                        <button class="tablinks" onclick="openCity(event, 'Paris')">Avg.time per genre</button>
+                        <button class="tablinks" onclick="openChart(event, 'runtime')">Runtime across time</button>
+                        <button class="tablinks" onclick="openChart(event, 'average')" id="defaultOpen">Avg.time per genre</button>
                      </div>
                   </div>
                   
@@ -132,21 +140,28 @@
          </div>
 
          <!-- Tab content -->
-         <div id="London" class="tabcontent">
-               <h3>London</h3>
-               <p>London is the capital city of England.</p>
+         <div id="runtime" class="tabcontent">
+            <div class="container">                 
+               <div class="row">
+                  <div class=" text_align_center col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                     <div id="runtimeYears" class="heading_small">
+                        </div>
+                  </div>
+               </div>
             </div>
-            
-            <div id="Paris" class="tabcontent">
-               <h3>Paris</h3>
-               <p>Paris is the capital of France.</p>
-            </div>
-            
-            <div id="Tokyo" class="tabcontent">
-               <h3>Tokyo</h3>
-               <p>Tokyo is the capital of Japan.</p>
          </div>
-
+         
+         <div id="average" class="tabcontent">
+            <div class="container">                 
+               <div class="row">
+                  <div class=" text_align_center col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                     <div id="avgRuntime" class="heading_small">
+                        </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+            
 
          <!-- Start Footer -->
          <footer class="footer-box">
@@ -197,6 +212,23 @@
       <script src="js/images-loded.min.js"></script>
       <script src="js/custom.js"></script>
       <!-- End Google Map -->
+      <script>
+         function openChart(evt, chartPlatform) {
+           var i, tabcontent, tablinks;
+           tabcontent = document.getElementsByClassName("tabcontent");
+           for (i = 0; i < tabcontent.length; i++) {
+             tabcontent[i].style.display = "none";
+           }
+           tablinks = document.getElementsByClassName("tablinks");
+           for (i = 0; i < tablinks.length; i++) {
+             tablinks[i].className = tablinks[i].className.replace(" active", "");
+           }
+           document.getElementById(chartPlatform).style.display = "block";
+           evt.currentTarget.className += " active";
+         }
+         // Get the element with id="defaultOpen" and click on it
+         document.getElementById("defaultOpen").click();
+      </script>
       <script>
          $(document).ready(function() {
            $('#sidebarCollapse').on('click', function() {
