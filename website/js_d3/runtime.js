@@ -178,11 +178,15 @@ d3.csv("/data/data.csv", function(data){
       .x(function(d) { return x(d.genre) })
       .y(function(d) { return y(+d.avgRun) })
 
+    console.log(lines)
+    
     avgRuntimeSVG.selectAll("myLines")
       .data(avgRuntime)
       .enter()
       .append("path")
         .attr("d", function(d){
+            console.log(d.values); 
+            console.log(lines(d.values)); 
             return lines(d.values);
         })
         .attr("stroke", function(d){ return d.color })
