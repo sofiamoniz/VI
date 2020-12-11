@@ -178,7 +178,6 @@ d3.csv("/data/data.csv", function(data){
       .x(function(d) { return x(d.genre) })
       .y(function(d) { return y(+d.avgRun) });
 
-    console.log("lines",lines)
     
     avgRuntimeSVG.selectAll("myLines")
       .data(avgRuntime)
