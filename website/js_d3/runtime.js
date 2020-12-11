@@ -144,7 +144,7 @@ d3.csv("/data/data.csv", function(data){
             .attr("cx", function (d) { return x(d.Year); } )
             .attr("cy", function (d) { return y(d.Runtime); } )
             .attr("r", 2)
-            .attr("fill", function(d) { return d.Color})
+            .attr("fill", function(d) { return d.Color});
 
 
     ////////////////////////////////////////////Average Runtime by Genre//////////////////////////////////////////////////////////////
@@ -176,9 +176,9 @@ d3.csv("/data/data.csv", function(data){
     // Add the lines
     const lines = d3.line()
       .x(function(d) { return x(d.genre) })
-      .y(function(d) { return y(+d.avgRun) })
+      .y(function(d) { return y(+d.avgRun) });
 
-    console.log(lines)
+    console.log("lines",lines)
     
     avgRuntimeSVG.selectAll("myLines")
       .data(avgRuntime)
@@ -191,7 +191,7 @@ d3.csv("/data/data.csv", function(data){
         })
         .attr("stroke", function(d){ return d.color })
         .style("stroke-width", 4)
-        .style("fill", "none")
+        .style("fill", "none");
 
     // Add the points
     avgRuntimeSVG
@@ -209,7 +209,7 @@ d3.csv("/data/data.csv", function(data){
         .attr("cx", function(d) { return x(d.genre) } )
         .attr("cy", function(d) { return y(d.avgRun) } )
         .attr("r", 5)
-        .attr("stroke", "white")
+        .attr("stroke", "white");
 
     /*
     // Add a legend at the end of each line
