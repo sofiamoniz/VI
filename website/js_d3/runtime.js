@@ -1,5 +1,5 @@
 // set the dimensions and margins of the graph
-var margin = {top: 10, right: 30, bottom: 30, left: 60},
+var margin = {top: 10, right: 30, bottom: 60, left: 60},
 width = 1200 - margin.left - margin.right,
 height = 800 - margin.top - margin.bottom;
 
@@ -175,7 +175,10 @@ d3.csv("/data/data.csv", function(data){
       .range([ 0, width ]);
     avgRuntimeSVG.append("g")
       .attr("transform", "translate(0," + height + ")")
-      .call(d3.axisBottom(x));
+      .call(d3.axisBottom(x))
+      .selectAll("text")
+      .attr("transform", "translate(-10,0)rotate(-45)")
+      .style("text-anchor", "end");
 
     // Add Y axis
     var y = d3.scaleLinear()
