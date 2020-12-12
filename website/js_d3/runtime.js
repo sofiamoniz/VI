@@ -1,6 +1,6 @@
 // set the dimensions and margins of the graph
 var margin = {top: 10, right: 30, bottom: 30, left: 60},
-width = 900 - margin.left - margin.right,
+width = 1200 - margin.left - margin.right,
 height = 800 - margin.top - margin.bottom;
 
 d3.csv("/data/data.csv", function(data){
@@ -65,48 +65,54 @@ d3.csv("/data/data.csv", function(data){
 
     const calcAvg = arr => arr.reduce((a,b) => a + b, 0) / arr.length
 
+    avgNetflixRun = []
+    avgPrimeRun = []
+    avgHuluRun = []
+    avgDisneyRun= []
+
     Object.keys(genreRuntimeNetflix).sort().map(function(g){
-        avgRuntime.push({
-            color: "#89CFF0",
-            platform: "Netflix",
-            values: {
-                genre: g,
-                avgRun: calcAvg(genreRuntimeNetflix[g])
-            }
+        avgNetflixRun.push({
+            genre: g,
+            avgRun: calcAvg(genreRuntimeNetflix[g])
         })
     })
 
     Object.keys(genreRuntimeHulu).sort().map(function(g){
-        avgRuntime.push({
-            color: "#ff4c4c",
-            platform: "Hulu",
-            values: {
-                genre: g,
-                avgRun: calcAvg(genreRuntimeHulu[g])
-            }
+        avgHuluRun.push({
+            genre: g,
+            avgRun: calcAvg(genreRuntimeHulu[g])
         })
     })
 
     Object.keys(genreRuntimePrime).sort().map(function(g){
-        avgRuntime.push({
-            color: "orange",
-            platform: "PrimeVideo",
-            values: {
-                genre: g,
-                avgRun: calcAvg(genreRuntimePrime[g])
-            }
+        avgPrimeRun.push({
+            genre: g,
+            avgRun: calcAvg(genreRuntimePrime[g])
         })
     })
 
     Object.keys(genreRuntimeDisney).sort().map(function(g){
-        avgRuntime.push({
-            color: "green",
-            platform: "Disney",
-            values: {
-                genre: g,
-                avgRun: calcAvg(genreRuntimeDisney[g])
-            }
+        avgDisneyRun.push({
+            genre: g,
+            avgRun: calcAvg(genreRuntimeDisney[g])
         })
+    })
+
+    avgRuntime.push({
+        platform: "Netflix",
+        values: avgNetflixRun
+    })
+    avgRuntime.push({
+        platform: "Hulu",
+        values: avgHuluRun
+    })
+    avgRuntime.push({
+        platform: "Prime",
+        values: avgPrimeRun
+    })
+    avgRuntime.push({
+        platform: "Disney",
+        values: avgDisneyRun
     })
 
     ////////////////////////////////////////////Total Runtime by Platform//////////////////////////////////////////////////////////////
@@ -149,7 +155,7 @@ d3.csv("/data/data.csv", function(data){
 
     ////////////////////////////////////////////Average Runtime by Genre//////////////////////////////////////////////////////////////
 
-    
+    console.log(avgRuntime)
 // append the svg object to the body of the page 
     var avgRuntimeSVG = d3.select("#avgRuntime")
     .append("svg")
@@ -159,7 +165,12 @@ d3.csv("/data/data.csv", function(data){
     .attr("transform",
         "translate(" + margin.left + "," + margin.top + ")");
 
-    var x = d3.scaleLinear()
+    // A color scale: one color for each group
+    var myColor = d3.scaleOrdinal()
+    .domain(["Netflix", "Prime", "Hulu", "Disney"])
+    .range(["red", "orange", "green", "blue"]);
+
+    var x = d3.scaleBand()
       .domain(Object.keys(genreRuntimePrime).sort())
       .range([ 0, width ]);
     avgRuntimeSVG.append("g")
@@ -168,27 +179,23 @@ d3.csv("/data/data.csv", function(data){
 
     // Add Y axis
     var y = d3.scaleLinear()
-      .domain( [0,300])
+      .domain( [0,160])
       .range([ height, 0 ]);
     avgRuntimeSVG.append("g")
       .call(d3.axisLeft(y));
 
+      
     // Add the lines
-    const lines = d3.line()
-      .x(function(d) { return x(d.genre) })
-      .y(function(d) { return y(+d.avgRun) });
-
+    const line = d3.line()
+    .x(function(d) { console.log("lmao  ");  return x(d.genre) })
+    .y(function(d) { return y(+d.avgRun) })
     
     avgRuntimeSVG.selectAll("myLines")
       .data(avgRuntime)
       .enter()
       .append("path")
-        .attr("d", function(d){
-            console.log(d.values); 
-            console.log(lines(d.values)); 
-            return lines(d.values);
-        })
-        .attr("stroke", function(d){ return d.color })
+        .attr("d", function(d) {return line(d.values); })
+        .attr("stroke", function(d){ return myColor(d.platform) })
         .style("stroke-width", 4)
         .style("fill", "none");
 
@@ -199,7 +206,7 @@ d3.csv("/data/data.csv", function(data){
       .data(avgRuntime)
       .enter()
         .append('g')
-        .style("fill", function(d){ return d.color })
+        .style("fill", function(d){ return myColor(d.platform) })
       // Second we need to enter in the 'values' part of this group
       .selectAll("myPoints")
       .data(function(d){ return d.values })
@@ -210,7 +217,6 @@ d3.csv("/data/data.csv", function(data){
         .attr("r", 5)
         .attr("stroke", "white");
 
-    /*
     // Add a legend at the end of each line
     avgRuntimeSVG
       .selectAll("myLabels")
@@ -222,8 +228,7 @@ d3.csv("/data/data.csv", function(data){
           .attr("transform", function(d) { return "translate(" + x(d.value.genre) + "," + y(d.value.avgRun) + ")"; }) // Put the text at the position of the last point
           .attr("x", 12) // shift the text a bit more right
           .text(function(d) { return d.name; })
-          .style("fill", function(d){ return d.color })
+          .style("fill", function(d){ return myColor(d.name) })
           .style("font-size", 15)
-    */
 
 })
