@@ -6,6 +6,11 @@ d3.csv("/data/data.csv", function(data){
    var DisneyTitle = 0
    var dictGenres = {}
    var dictYears = {}
+   netflixUnique=0
+   primeUnique=0
+   huluUnique=0
+   disneyUnique=0
+   exclusiveDic = {}
 
    data.forEach(function(d) {
       if(d.Netflix == 1){
@@ -31,6 +36,18 @@ d3.csv("/data/data.csv", function(data){
             }
          }         
       });
+      if(d.Netflix == 1 && d.PrimeVideo == 0 && d.Hulu == 0 && d.Disney == 0){
+         netflixUnique+=1
+      }
+      if(d.PrimeVideo == 1 && d.Netflix == 0 && d.Hulu == 0 && d.Disney == 0){
+         primeUnique+=1
+      }
+      if(d.Hulu == 1 && d.Netflix == 0 && d.PrimeVideo == 0 && d.Disney == 0){
+         huluUnique+=1
+      }
+      if(d.Disney == 1 && d.Netflix == 0 && d.PrimeVideo == 0 && d.Hulu == 0){
+         disneyUnique+=1
+      }
 
       if (d.Year in dictYears) {
          dictYears[d.Year] += 1
@@ -38,6 +55,12 @@ d3.csv("/data/data.csv", function(data){
       else{
          dictYears[d.Year] = 1
       }
+      exclusiveDic["Netflix"]=netflixUnique
+      exclusiveDic["Prime"]=primeUnique
+      exclusiveDic["Hulu"]=huluUnique
+      exclusiveDic["DisneyPlus"]=disneyUnique
+
+
 
    }); 
    ////////////////////////////////////////////Piechart//////////////////////////////////////////////////////////////
@@ -117,7 +140,83 @@ d3.csv("/data/data.csv", function(data){
    .style("text-anchor", "middle")
    .style("font-size", 18)
    .attr("dy", 5)
+
+   ////////////////////////////////////////////Exclusives//////////////////////////////////////////////////////////////
+   console.log(exclusiveDic)
+   exclusives_value = []
+   for(let k in exclusiveDic){
+      exclusives_value.push({platform: k, value: exclusiveDic[k]})
+   }
+
+   // set the dimensions and margins of the graph
+   var margin = {top: 20, right: 30, bottom: 40, left: 90},
+   width = 560 - margin.left - margin.right,
+   height = 500 - margin.top - margin.bottom;
+
+   // append the svg object to the body of the page
+   var svg = d3.select("#exclusives")
+   .append("svg")
+   .attr("width", width + margin.left + margin.right)
+   .attr("height", height + margin.top + margin.bottom)
+   .append("g")
+   .attr("transform",
+         "translate(" + margin.left + "," + margin.top + ")");
+
+  
+   // Add X axis
+   var x = d3.scaleLinear()
+   .domain([0, 13000])
+   .range([ 0, width]);
+   svg.append("g")
+   .attr("transform", "translate(0," + height + ")")
+   .call(d3.axisBottom(x))
+   .selectAll("text")
+   .attr("transform", "translate(-10,0)rotate(-45)")
+   .style("text-anchor", "end")
+   .style("font-size", 12);
+
    
+   // Y axis
+   var y = d3.scaleBand()
+   .range([ 0, height ])
+   .domain(exclusives_value.map(function(d) { return d.platform; }))
+   .padding(.1);
+   svg.append("g")
+   .call(d3.axisLeft(y))
+   .selectAll("text")
+   .style("font-size", 12);
+
+   var tooltipBars = d3.select("body")
+    .append("div")
+        .attr("class", "tooltip")
+        .style("opacity", 1)
+        .style("background-color", "white")
+        .style("border", "solid")
+        .style("border-width", "2px")
+        .style("border-radius", "5px")
+        .style("padding", "5px")
+
+   //Bars
+   svg.selectAll("myRect")
+   .data(exclusives_value)
+   .enter()
+   .append("rect")
+   .attr("x", x(0) )
+   .attr("y", function(d) { return y(d.platform); })
+   .attr("width", function(d) { return x(d.value); })
+   .attr("height", y.bandwidth() )
+   .attr("fill", "#ff4c4c")
+   .on("mouseover", function(d){tooltipBars.text(d.platform+": "+d.value+" exclusive movies"); return tooltipBars.style("visibility", "visible");})
+   .on("mousemove", function(){return tooltipBars.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
+   .on("mouseout", function(){return tooltipBars.style("visibility", "hidden");});
+
+
+   // .attr("x", function(d) { return x(d.Country); })
+   // .attr("y", function(d) { return y(d.Value); })
+   // .attr("width", x.bandwidth())
+   // .attr("height", function(d) { return height - y(d.Value); })
+   // .attr("fill", "#69b3a2")
+
    
    ////////////////////////////////////////////Genres//////////////////////////////////////////////////////////////
    
