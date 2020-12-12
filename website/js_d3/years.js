@@ -136,8 +136,7 @@ d3.csv("/data/data.csv", function(data){
         .on("mouseover", function(d){tooltip.text(d.Value+" movies"); return tooltip.style("visibility", "visible");})
         .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
         .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
-
-    
+        
     general_max = max_num
 
     ////////////////////////////////////////////Prime Year//////////////////////////////////////////////////////////////
@@ -221,6 +220,8 @@ d3.csv("/data/data.csv", function(data){
         .on("mouseover", function(d){tooltip.text(d.Value+" movies"); return tooltip.style("visibility", "visible");})
         .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
         .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
+    
+    
 
 
     if (max_num > general_max) general_max = max_num
@@ -395,7 +396,7 @@ d3.csv("/data/data.csv", function(data){
     ////////////////////////////////////////////All Years//////////////////////////////////////////////////////////////
 
     all_years_data = []
-    for (i = parseInt(max_year) - 50; i < parseInt(max_year); i++){
+    for (i = parseInt(max_year) - 30; i < parseInt(max_year); i++){
         key = "" + i;
         all_years_data.push({
             Year: key,

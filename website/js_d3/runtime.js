@@ -23,7 +23,7 @@ d3.csv("/data/data.csv", function(data){
             return;
         }
         if (d.Netflix == 1) {
-            runtimeByYears.push({Year: d.Year, Runtime: run, Color: "#89CFF0"})
+            runtimeByYears.push({Name: d.Title, Year: d.Year, Runtime: run, Color: "#89CFF0"})
             d.Genres.split(",").forEach(function (g){
                 if (g=="") return;
                 if (!(g in genreRuntimeNetflix)) genreRuntimeNetflix[g] = []
@@ -31,7 +31,7 @@ d3.csv("/data/data.csv", function(data){
             })
         }
         if (d.Hulu == 1) {
-            runtimeByYears.push({Year: d.Year, Runtime: d.Runtime, Color: "#ff4c4c"})
+            runtimeByYears.push({Name: d.Title, Year: d.Year, Runtime: d.Runtime, Color: "#ff4c4c"})
             d.Genres.split(",").forEach(function (g){
                 if (g=="") return;
                 if (!(g in genreRuntimeHulu)) genreRuntimeHulu[g] = []
@@ -39,7 +39,7 @@ d3.csv("/data/data.csv", function(data){
             })
         }
         if (d.PrimeVideo == 1) {
-            runtimeByYears.push({Year: d.Year, Runtime: d.Runtime, Color: "orange"})
+            runtimeByYears.push({Name: d.Title, Year: d.Year, Runtime: d.Runtime, Color: "orange"})
             d.Genres.split(",").forEach(function (g){
                 if (g=="") return;
                 if (!(g in genreRuntimePrime)) genreRuntimePrime[g] = []
@@ -47,7 +47,7 @@ d3.csv("/data/data.csv", function(data){
             })
         }
         if (d.Disney == 1) {
-            runtimeByYears.push({Year: d.Year, Runtime: d.Runtime, Color: "green"})
+            runtimeByYears.push({Name: d.Title, Year: d.Year, Runtime: d.Runtime, Color: "green"})
             d.Genres.split(",").forEach(function (g){
                 if (g=="") return;
                 if (!(g in genreRuntimeDisney)) genreRuntimeDisney[g] = []
@@ -117,6 +117,41 @@ d3.csv("/data/data.csv", function(data){
 
     ////////////////////////////////////////////Total Runtime by Platform//////////////////////////////////////////////////////////////
 
+    var totalRuntimeTooltip = d3.select("#runtimeYears")
+    .append("div")
+    .style("opacity", 0)
+    .attr("class", "tooltip")
+    .style("background-color", "black")
+    .style("color", "white")
+    .style("border-radius", "5px")
+    .style("padding", "10px")
+
+    // A function that change this tooltip when the user hover a point.
+    // Its opacity is set to 1: we can now see it. Plus it set the text and position of tooltip depending on the datapoint (d)
+    var showRunTooltip = function(d) {
+        totalRuntimeTooltip
+        .transition()
+        .duration(100)
+        .style("opacity", 1)
+        console.log()
+        totalRuntimeTooltip
+        .html("Total Runtime of " + d.Name + " ("+d.Year+"): " + d.Runtime + "mins")
+        .style("left", (d3.mouse(this)[0]+40) + "px")
+        .style("top", (d3.mouse(this)[1]+20) + "px")
+    }
+    var moveRunTooltip = function(d) {
+        totalRuntimeTooltip
+    .style("left", (d3.mouse(this)[0]+40) + "px")
+    .style("top", (d3.mouse(this)[1]+20) + "px")
+    }
+    // A function that change this tooltip when the leaves a point: just need to set opacity to 0 again
+    var hideRunTooltip = function(d) {
+        totalRuntimeTooltip
+        .transition()
+        .duration(100)
+        .style("opacity", 0)
+    }
+
     // append the svg object to the body of the page
     var runtimeSVG = d3.select("#runtimeYears")
     .append("svg")
@@ -141,6 +176,21 @@ d3.csv("/data/data.csv", function(data){
     runtimeSVG.append("g")
         .call(d3.axisLeft(y));
 
+    runtimeSVG.append("text")
+        .attr("class", "x label")
+        .attr("text-anchor", "end")
+        .attr("x", width)
+        .attr("y", height - 6)
+        .text("Years");
+    
+    runtimeSVG.append("text")
+    .attr("class", "y label")
+    .attr("text-anchor", "end")
+    .attr("y", 6)
+    .attr("dy", ".75em")
+    .attr("transform", "rotate(-90)")
+    .text("Total Runtime (mins)");
+
     // Add dots
     runtimeSVG.append('g')
         .selectAll("dot")
@@ -150,21 +200,59 @@ d3.csv("/data/data.csv", function(data){
             .attr("cx", function (d) { return x(d.Year); } )
             .attr("cy", function (d) { return y(d.Runtime); } )
             .attr("r", 2)
-            .attr("fill", function(d) { return d.Color});
-
+            .attr("fill", function(d) { return d.Color})
+            .on("mouseover", showRunTooltip )
+            .on("mousemove", moveRunTooltip )
+            .on("mouseleave", hideRunTooltip );
 
     ////////////////////////////////////////////Average Runtime by Genre//////////////////////////////////////////////////////////////
 
-    console.log(avgRuntime)
-// append the svg object to the body of the page 
+    
+    // append the svg object to the body of the page 
     var avgRuntimeSVG = d3.select("#avgRuntime")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
     .append("g")
     .attr("transform",
-        "translate(" + margin.left + "," + margin.top + ")");
+    "translate(" + margin.left + "," + margin.top + ")");
+    
+    var avgRuntimeTooltip = d3.select("#avgRuntime")
+    .append("div")
+    .style("opacity", 0)
+    .attr("class", "tooltip")
+    .style("background-color", "black")
+    .style("color", "white")
+    .style("border-radius", "5px")
+    .style("padding", "10px")
 
+    // A function that change this tooltip when the user hover a point.
+    // Its opacity is set to 1: we can now see it. Plus it set the text and position of tooltip depending on the datapoint (d)
+    var showTooltip = function(d) {
+        avgRuntimeTooltip
+        .transition()
+        .duration(100)
+        .style("opacity", 1)
+        console.log()
+        avgRuntimeTooltip
+        .html("Average Runtime: " + d.genre + " - " + Math.round(d.avgRun*100)/100 + "mins")
+        .style("left", (d3.mouse(this)[0]+40) + "px")
+        .style("top", (d3.mouse(this)[1]+20) + "px")
+    }
+    var moveTooltip = function(d) {
+        avgRuntimeTooltip
+    .style("left", (d3.mouse(this)[0]+40) + "px")
+    .style("top", (d3.mouse(this)[1]+20) + "px")
+    }
+    // A function that change this tooltip when the leaves a point: just need to set opacity to 0 again
+    var hideTooltip = function(d) {
+        avgRuntimeTooltip
+        .transition()
+        .duration(100)
+        .style("opacity", 0)
+    }
+
+    
     // A color scale: one color for each group
     var myColor = d3.scaleOrdinal()
     .domain(["Netflix", "Prime", "Hulu", "Disney"])
@@ -190,7 +278,7 @@ d3.csv("/data/data.csv", function(data){
       
     // Add the lines
     const line = d3.line()
-    .x(function(d) { console.log("lmao  ");  return x(d.genre) })
+    .x(function(d) { return x(d.genre) })
     .y(function(d) { return y(+d.avgRun) })
     
     avgRuntimeSVG.selectAll("myLines")
@@ -218,7 +306,10 @@ d3.csv("/data/data.csv", function(data){
         .attr("cx", function(d) { return x(d.genre) } )
         .attr("cy", function(d) { return y(d.avgRun) } )
         .attr("r", 5)
-        .attr("stroke", "white");
+        .attr("stroke", "white")
+        .on("mouseover", showTooltip )
+        .on("mousemove", moveTooltip )
+        .on("mouseleave", hideTooltip );
 
     // Add a legend at the end of each line
     avgRuntimeSVG
@@ -233,5 +324,20 @@ d3.csv("/data/data.csv", function(data){
           .text(function(d) { return d.name; })
           .style("fill", function(d){ return myColor(d.name) })
           .style("font-size", 15)
+
+    avgRuntimeSVG.append("text")
+          .attr("class", "x label")
+          .attr("text-anchor", "end")
+          .attr("x", width)
+          .attr("y", height - 6)
+          .text("Genres");
+      
+    avgRuntimeSVG.append("text")
+      .attr("class", "y label")
+      .attr("text-anchor", "end")
+      .attr("y", 6)
+      .attr("dy", ".75em")
+      .attr("transform", "rotate(-90)")
+      .text("Average Runtime (mins)");
 
 })

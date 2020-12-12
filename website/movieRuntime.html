@@ -34,6 +34,11 @@
             overflow: hidden;
             border: 1px solid #ccc;
             background-color: #f1f1f1;
+            border-radius: 8px 0 0 0;
+            -webkit-transform: skewX(-10deg);
+               -moz-transform: skewX(-10deg);
+                  -o-transform: skewX(-10deg);
+                     transform: skewX(-10deg);
          }
          
          /* Style the buttons inside the tab */
@@ -55,7 +60,7 @@
          
          /* Create an active/current tablink class */
          .tab button.active {
-            background-color: #ccc;
+            background-color: #ff4c4c;
          }
          
          /* Style the tab content */
@@ -131,7 +136,7 @@
                      <!-- Tab links -->
                      <div class="tab">
                         <button class="tablinks" onclick="openChart(event, 'runtime')" id="defaultOpen">Runtime across time</button>
-                        <button class="tablinks" onclick="openChart(event, 'average')">Avg.time per genre</button>
+                        <button class="tablinks" onclick="openChart(event, 'average')">Avg. Time per genre</button>
                      </div>
                   </div>
                   
