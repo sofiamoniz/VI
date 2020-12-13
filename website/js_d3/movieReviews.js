@@ -900,7 +900,7 @@ d3.csv("/data/data.csv", function(data){
     .attr("text-anchor", "end")
     .attr("x", width)
     .attr("y", height + margin.top + 20)
-    .text("Reviews")
+    .text("Classification")
 
     // Y axis
     var y = d3.scaleBand()
