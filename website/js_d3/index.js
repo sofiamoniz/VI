@@ -55,16 +55,16 @@ d3.csv("/data/data.csv", function(data){
       else{
          dictYears[d.Year] = 1
       }
-      exclusiveDic["Netflix"]=netflixUnique
-      exclusiveDic["Prime"]=primeUnique
-      exclusiveDic["Hulu"]=huluUnique
-      exclusiveDic["DisneyPlus"]=disneyUnique
 
-
+      exclusives_value = []
+      exclusives_value.push({platform: "Netflix", value: netflixUnique, color:"#89CFF0" });
+      exclusives_value.push({platform: "Amazon Prime", value: primeUnique, color:"green" });
+      exclusives_value.push({platform: "Hulu", value: huluUnique, color:"orange" });
+      exclusives_value.push({platform: "Disney Plus", value: disneyUnique, color:"#ff4c4c" });
 
    }); 
    ////////////////////////////////////////////Piechart//////////////////////////////////////////////////////////////
-   dataPie = {Netflix : NetflixTitle, Hulu: HuluTitle, PrimeVideo: PrimeTitle, DisneyPlus: DisneyTitle}
+   dataPie = {Netflix : NetflixTitle, Hulu: HuluTitle, AmazonPrime: PrimeTitle, DisneyPlus: DisneyTitle}
    // set the dimensions and margins of the graph
    var width = 450
       height = 450
@@ -142,11 +142,7 @@ d3.csv("/data/data.csv", function(data){
    .attr("dy", 5)
 
    ////////////////////////////////////////////Exclusives//////////////////////////////////////////////////////////////
-   console.log(exclusiveDic)
-   exclusives_value = []
-   for(let k in exclusiveDic){
-      exclusives_value.push({platform: k, value: exclusiveDic[k]})
-   }
+   
 
    // set the dimensions and margins of the graph
    var margin = {top: 20, right: 30, bottom: 40, left: 90},
@@ -205,7 +201,7 @@ d3.csv("/data/data.csv", function(data){
    .attr("y", function(d) { return y(d.platform); })
    .attr("width", function(d) { return x(d.value); })
    .attr("height", y.bandwidth() )
-   .attr("fill", "#ff4c4c")
+   .attr("fill", function(d) { return d.color; })
    .on("mouseover", function(d){tooltipBars.text(d.platform+": "+d.value+" exclusive movies"); return tooltipBars.style("visibility", "visible");})
    .on("mousemove", function(){return tooltipBars.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
    .on("mouseout", function(){return tooltipBars.style("visibility", "hidden");});

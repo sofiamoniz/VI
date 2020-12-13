@@ -23,7 +23,7 @@ d3.csv("/data/data.csv", function(data){
             return;
         }
         if (d.Netflix == 1) {
-            runtimeByYears.push({Name: d.Title, Year: d.Year, Runtime: run, Color: "#89CFF0"})
+            runtimeByYears.push({Name: d.Title, Year: d.Year, Runtime: run, Color: "#89CFF0", Platform:"Netflix"})
             d.Genres.split(",").forEach(function (g){
                 if (g=="") return;
                 if (!(g in genreRuntimeNetflix)) genreRuntimeNetflix[g] = []
@@ -31,7 +31,7 @@ d3.csv("/data/data.csv", function(data){
             })
         }
         if (d.Hulu == 1) {
-            runtimeByYears.push({Name: d.Title, Year: d.Year, Runtime: d.Runtime, Color: "#ff4c4c"})
+            runtimeByYears.push({Name: d.Title, Year: d.Year, Runtime: d.Runtime, Color: "orange", Platform:"Hulu"})
             d.Genres.split(",").forEach(function (g){
                 if (g=="") return;
                 if (!(g in genreRuntimeHulu)) genreRuntimeHulu[g] = []
@@ -39,7 +39,7 @@ d3.csv("/data/data.csv", function(data){
             })
         }
         if (d.PrimeVideo == 1) {
-            runtimeByYears.push({Name: d.Title, Year: d.Year, Runtime: d.Runtime, Color: "orange"})
+            runtimeByYears.push({Name: d.Title, Year: d.Year, Runtime: d.Runtime, Color: "#ff4c4c", Platform:"AmazonPrime"})
             d.Genres.split(",").forEach(function (g){
                 if (g=="") return;
                 if (!(g in genreRuntimePrime)) genreRuntimePrime[g] = []
@@ -47,7 +47,7 @@ d3.csv("/data/data.csv", function(data){
             })
         }
         if (d.Disney == 1) {
-            runtimeByYears.push({Name: d.Title, Year: d.Year, Runtime: d.Runtime, Color: "green"})
+            runtimeByYears.push({Name: d.Title, Year: d.Year, Runtime: d.Runtime, Color: "green", Platform:"Hulu"})
             d.Genres.split(",").forEach(function (g){
                 if (g=="") return;
                 if (!(g in genreRuntimeDisney)) genreRuntimeDisney[g] = []
@@ -135,7 +135,7 @@ d3.csv("/data/data.csv", function(data){
         .style("opacity", 1)
         console.log()
         totalRuntimeTooltip
-        .html("Total Runtime of " + d.Name + " ("+d.Year+"): " + d.Runtime + "mins")
+        .html("Total Runtime of " + d.Name + " ("+d.Year+"), on "+d.Platform+": " + d.Runtime + "mins")
         .style("left", (d3.mouse(this)[0]+40) + "px")
         .style("top", (d3.mouse(this)[1]+20) + "px")
     }
@@ -205,6 +205,15 @@ d3.csv("/data/data.csv", function(data){
             .on("mousemove", moveRunTooltip )
             .on("mouseleave", hideRunTooltip );
 
+        runtimeSVG.append("circle").attr("cx",410).attr("cy",10).attr("r", 6).style("fill", "#89CFF0")
+        runtimeSVG.append("circle").attr("cx",410).attr("cy",30).attr("r", 6).style("fill", "#ff4c4c")
+        runtimeSVG.append("circle").attr("cx",410).attr("cy",50).attr("r", 6).style("fill", "orange")
+        runtimeSVG.append("circle").attr("cx",410).attr("cy",70).attr("r", 6).style("fill", "green")
+        runtimeSVG.append("text").attr("x", 430).attr("y", 10).text("Netflix").style("font-size", "15px").attr("alignment-baseline","middle")
+        runtimeSVG.append("text").attr("x", 430).attr("y", 30).text("Amazon Prime").style("font-size", "15px").attr("alignment-baseline","middle")
+        runtimeSVG.append("text").attr("x", 430).attr("y", 50).text("Hulu").style("font-size", "15px").attr("alignment-baseline","middle")
+        runtimeSVG.append("text").attr("x", 430).attr("y", 70).text("Disney").style("font-size", "15px").attr("alignment-baseline","middle")
+
     ////////////////////////////////////////////Average Runtime by Genre//////////////////////////////////////////////////////////////
 
     
@@ -256,7 +265,7 @@ d3.csv("/data/data.csv", function(data){
     // A color scale: one color for each group
     var myColor = d3.scaleOrdinal()
     .domain(["Netflix", "Prime", "Hulu", "Disney"])
-    .range(["red", "orange", "green", "blue"]);
+    .range(["#89CFF0", "#ff4c4c", "orange", "green"]);
 
     var x = d3.scaleBand()
       .domain(Object.keys(genreRuntimePrime).sort())
