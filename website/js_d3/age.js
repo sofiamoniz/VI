@@ -599,5 +599,15 @@ d3.csv("/data/data.csv", function(data){
     .attr("x", -margin.top)
     .text("Nº of movies");
 
+    //Legenda 
+    svg.append("circle").attr("cx",780).attr("cy",10).attr("r", 6).style("fill", "#89CFF0")
+    svg.append("circle").attr("cx",780).attr("cy",30).attr("r", 6).style("fill", "#ff4c4c")
+    svg.append("circle").attr("cx",780).attr("cy",50).attr("r", 6).style("fill", "orange")
+    svg.append("circle").attr("cx",780).attr("cy",70).attr("r", 6).style("fill", "green")
+    svg.append("text").attr("x", 800).attr("y", 10).text("Netflix").style("font-size", "15px").attr("alignment-baseline","middle")
+    svg.append("text").attr("x", 800).attr("y", 30).text("Amazon Prime").style("font-size", "15px").attr("alignment-baseline","middle")
+    svg.append("text").attr("x", 800).attr("y", 50).text("Hulu").style("font-size", "15px").attr("alignment-baseline","middle")
+    svg.append("text").attr("x", 800).attr("y", 70).text("Disney+").style("font-size", "15px").attr("alignment-baseline","middle")
+
 
 });
