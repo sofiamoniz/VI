@@ -113,7 +113,7 @@ d3.csv("/data/data.csv", function(data){
     .data(lang_value)
     .enter()
     .append("path")
-    .attr("fill", "#ff4c4c")
+    .attr("fill", "#89CFF0")
     .attr("d", d3.arc()     // imagine your doing a part of a donut plot
         .innerRadius(innerRadius)
         .outerRadius(function(d) { return y(d.Value);})
@@ -283,7 +283,7 @@ d3.csv("/data/data.csv", function(data){
     .data(lang_value)
     .enter()
     .append("path")
-    .attr("fill", "#ff4c4c")
+    .attr("fill", "orange")
     .attr("d", d3.arc()     // imagine your doing a part of a donut plot
         .innerRadius(innerRadius)
         .outerRadius(function(d) { return y(d.Value);})
@@ -363,7 +363,7 @@ d3.csv("/data/data.csv", function(data){
     .data(lang_value)
     .enter()
     .append("path")
-    .attr("fill", "#ff4c4c")
+    .attr("fill", "green")
     .attr("d", d3.arc()     // imagine your doing a part of a donut plot
         .innerRadius(innerRadius)
         .outerRadius(function(d) { return y(d.Value);})
