@@ -4,7 +4,6 @@ width = 1200 - margin.left - margin.right,
 height = 800 - margin.top - margin.bottom;
 
 d3.csv("/data/data.csv", function(data){
-    var runtimeByYears = []
 
     var genreRuntimeNetflix = {}
     var genreRuntimeHulu = {}
@@ -23,7 +22,6 @@ d3.csv("/data/data.csv", function(data){
             return;
         }
         if (d.Netflix == 1) {
-            runtimeByYears.push({Name: d.Title, Year: d.Year, Runtime: run, Color: "#89CFF0", Platform:"Netflix"})
             d.Genres.split(",").forEach(function (g){
                 if (g=="") return;
                 if (!(g in genreRuntimeNetflix)) genreRuntimeNetflix[g] = []
@@ -31,7 +29,6 @@ d3.csv("/data/data.csv", function(data){
             })
         }
         if (d.Hulu == 1) {
-            runtimeByYears.push({Name: d.Title, Year: d.Year, Runtime: d.Runtime, Color: "orange", Platform:"Hulu"})
             d.Genres.split(",").forEach(function (g){
                 if (g=="") return;
                 if (!(g in genreRuntimeHulu)) genreRuntimeHulu[g] = []
@@ -39,7 +36,6 @@ d3.csv("/data/data.csv", function(data){
             })
         }
         if (d.PrimeVideo == 1) {
-            runtimeByYears.push({Name: d.Title, Year: d.Year, Runtime: d.Runtime, Color: "#ff4c4c", Platform:"AmazonPrime"})
             d.Genres.split(",").forEach(function (g){
                 if (g=="") return;
                 if (!(g in genreRuntimePrime)) genreRuntimePrime[g] = []
@@ -47,7 +43,6 @@ d3.csv("/data/data.csv", function(data){
             })
         }
         if (d.Disney == 1) {
-            runtimeByYears.push({Name: d.Title, Year: d.Year, Runtime: d.Runtime, Color: "green", Platform:"Hulu"})
             d.Genres.split(",").forEach(function (g){
                 if (g=="") return;
                 if (!(g in genreRuntimeDisney)) genreRuntimeDisney[g] = []
@@ -114,105 +109,6 @@ d3.csv("/data/data.csv", function(data){
         platform: "Disney",
         values: avgDisneyRun
     })
-
-    ////////////////////////////////////////////Total Runtime by Platform//////////////////////////////////////////////////////////////
-
-    var totalRuntimeTooltip = d3.select("#runtimeYears")
-    .append("div")
-    .style("opacity", 0)
-    .attr("class", "tooltip")
-    .style("background-color", "black")
-    .style("color", "white")
-    .style("border-radius", "5px")
-    .style("padding", "10px")
-
-    // A function that change this tooltip when the user hover a point.
-    // Its opacity is set to 1: we can now see it. Plus it set the text and position of tooltip depending on the datapoint (d)
-    var showRunTooltip = function(d) {
-        totalRuntimeTooltip
-        .transition()
-        .duration(100)
-        .style("opacity", 1)
-        console.log()
-        totalRuntimeTooltip
-        .html("Total Runtime of " + d.Name + " ("+d.Year+"), on "+d.Platform+": " + d.Runtime + "mins")
-        .style("left", (d3.mouse(this)[0]+40) + "px")
-        .style("top", (d3.mouse(this)[1]+20) + "px")
-    }
-    var moveRunTooltip = function(d) {
-        totalRuntimeTooltip
-    .style("left", (d3.mouse(this)[0]+40) + "px")
-    .style("top", (d3.mouse(this)[1]+20) + "px")
-    }
-    // A function that change this tooltip when the leaves a point: just need to set opacity to 0 again
-    var hideRunTooltip = function(d) {
-        totalRuntimeTooltip
-        .transition()
-        .duration(100)
-        .style("opacity", 0)
-    }
-
-    // append the svg object to the body of the page
-    var runtimeSVG = d3.select("#runtimeYears")
-    .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-    .attr("transform",
-        "translate(" + margin.left + "," + margin.top + ")");
-
-    // Add X axis
-    var x = d3.scaleLinear()
-        .domain([min_year - 1, max_year + 1])
-        .range([ 0, width ]);
-    runtimeSVG.append("g")
-        .attr("transform", "translate(0," + height + ")")
-        .call(d3.axisBottom(x));
-
-    // Add Y axis
-    var y = d3.scaleLinear()
-        .domain([parseInt(min_runtime) -10, parseInt(max_runtime) +10])
-        .range([ height, 0]);
-    runtimeSVG.append("g")
-        .call(d3.axisLeft(y));
-
-    runtimeSVG.append("text")
-        .attr("class", "x label")
-        .attr("text-anchor", "end")
-        .attr("x", width)
-        .attr("y", height - 6)
-        .text("Years");
-    
-    runtimeSVG.append("text")
-    .attr("class", "y label")
-    .attr("text-anchor", "end")
-    .attr("y", 6)
-    .attr("dy", ".75em")
-    .attr("transform", "rotate(-90)")
-    .text("Total Runtime (mins)");
-
-    // Add dots
-    runtimeSVG.append('g')
-        .selectAll("dot")
-        .data(runtimeByYears)
-        .enter()
-        .append("circle")
-            .attr("cx", function (d) { return x(d.Year); } )
-            .attr("cy", function (d) { return y(d.Runtime); } )
-            .attr("r", 2)
-            .attr("fill", function(d) { return d.Color})
-            .on("mouseover", showRunTooltip )
-            .on("mousemove", moveRunTooltip )
-            .on("mouseleave", hideRunTooltip );
-
-        runtimeSVG.append("circle").attr("cx",410).attr("cy",10).attr("r", 6).style("fill", "#89CFF0")
-        runtimeSVG.append("circle").attr("cx",410).attr("cy",30).attr("r", 6).style("fill", "#ff4c4c")
-        runtimeSVG.append("circle").attr("cx",410).attr("cy",50).attr("r", 6).style("fill", "orange")
-        runtimeSVG.append("circle").attr("cx",410).attr("cy",70).attr("r", 6).style("fill", "green")
-        runtimeSVG.append("text").attr("x", 430).attr("y", 10).text("Netflix").style("font-size", "15px").attr("alignment-baseline","middle")
-        runtimeSVG.append("text").attr("x", 430).attr("y", 30).text("Amazon Prime").style("font-size", "15px").attr("alignment-baseline","middle")
-        runtimeSVG.append("text").attr("x", 430).attr("y", 50).text("Hulu").style("font-size", "15px").attr("alignment-baseline","middle")
-        runtimeSVG.append("text").attr("x", 430).attr("y", 70).text("Disney").style("font-size", "15px").attr("alignment-baseline","middle")
 
     ////////////////////////////////////////////Average Runtime by Genre//////////////////////////////////////////////////////////////
 

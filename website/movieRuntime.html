@@ -65,7 +65,6 @@
          
          /* Style the tab content */
          .tabcontent {
-            display: none;
             padding: 6px 12px;
             border: 1px solid #ccc;
             border-top: none;
@@ -121,7 +120,7 @@
                </div>
             </header>
          <!-- End header -->
-         <!-- Start Banner -->
+
          <!-- section -->
          <div class="section about_section layout_padding dash_bg">
             <div class="container">
@@ -129,32 +128,13 @@
                      <div class="col-md-12">
                            <div class="full">
                               <div class="heading_main text_align_center">
-                                 <h2 class="margin-bottom_30">Movie runtime<br><strong class="small theme_color">Relative to all four platforms</strong></h2>
+                                 <h2 class="margin-bottom_30">Movie runtime<br><strong class="small theme_color">Average Runtime Per Genre in All Platforms</strong></h2>
                               </div>
                      </div>
-                  <div class="col-md-12">
-                     <!-- Tab links -->
-                     <div class="tab">
-                        <button class="tablinks" onclick="openChart(event, 'runtime')" id="defaultOpen">Runtime across time</button>
-                        <button class="tablinks" onclick="openChart(event, 'average')">Avg. Time per genre</button>
-                     </div>
-                  </div>
-                  
                </div>               
             </div>
          </div>
 
-         <!-- Tab content -->
-         <div id="runtime" class="tabcontent">
-            <div class="container">                 
-               <div class="row">
-                  <div class=" text_align_center col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                     <div id="runtimeYears" class="heading_small">
-                        </div>
-                  </div>
-               </div>
-            </div>
-         </div>
          
          <div id="average" class="tabcontent">
             <div class="container">                 
@@ -185,7 +165,7 @@
                         <p>Ana Sofia Fernandes<br><small>nmec 88739</small></p>
                      </div>
                      <div class="col-md-6">
-                        <p>Pedro Oliveira<br><small>nmec 89155</small></p>
+                        <p>Pedro Oliveira<br><small>nmec 89156</small></p>
                      </div>
                   </div>
                </div>
@@ -217,23 +197,7 @@
       <script src="js/images-loded.min.js"></script>
       <script src="js/custom.js"></script>
       <!-- End Google Map -->
-      <script>
-         function openChart(evt, chartPlatform) {
-           var i, tabcontent, tablinks;
-           tabcontent = document.getElementsByClassName("tabcontent");
-           for (i = 0; i < tabcontent.length; i++) {
-             tabcontent[i].style.display = "none";
-           }
-           tablinks = document.getElementsByClassName("tablinks");
-           for (i = 0; i < tablinks.length; i++) {
-             tablinks[i].className = tablinks[i].className.replace(" active", "");
-           }
-           document.getElementById(chartPlatform).style.display = "block";
-           evt.currentTarget.className += " active";
-         }
-         // Get the element with id="defaultOpen" and click on it
-         document.getElementById("defaultOpen").click();
-      </script>
+      
       <script>
          $(document).ready(function() {
            $('#sidebarCollapse').on('click', function() {

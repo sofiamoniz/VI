@@ -132,7 +132,7 @@ d3.csv("/data/data.csv", function(data){
         .attr("y", function(d) { return y(d.Value); })
         .attr("width", x.bandwidth())
         .attr("height", function(d) { return height - y(d.Value); })
-        .attr("fill", "#ff4c4c")
+        .attr("fill", "#89CFF0")
         .on("mouseover", function(d){tooltip.text("'"+d.Year+"': "+d.Value+" movies"); return tooltip.style("visibility", "visible");})
         .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
         .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
@@ -302,7 +302,7 @@ d3.csv("/data/data.csv", function(data){
         .attr("y", function(d) { return y(d.Value); })
         .attr("width", x.bandwidth())
         .attr("height", function(d) { return height - y(d.Value); })
-        .attr("fill", "#ff4c4c")
+        .attr("fill", "orange")
         .on("mouseover", function(d){tooltip.text(d.Value+" movies"); return tooltip.style("visibility", "visible");})
         .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
         .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
@@ -386,7 +386,7 @@ d3.csv("/data/data.csv", function(data){
         .attr("y", function(d) { return y(d.Value); })
         .attr("width", x.bandwidth())
         .attr("height", function(d) { return height - y(d.Value); })
-        .attr("fill", "#ff4c4c")
+        .attr("fill", "green")
         .on("mouseover", function(d){tooltip.text(d.Value+" movies"); return tooltip.style("visibility", "visible");})
         .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
         .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
