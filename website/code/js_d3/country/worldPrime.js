@@ -1,4 +1,4 @@
-d3.csv("/data/data.csv", function(data){
+d3.csv("/code/data/data.csv", function(data){
     var dictCountriesPrime = {}
 
     data.forEach(function(d) {
@@ -18,7 +18,7 @@ d3.csv("/data/data.csv", function(data){
     });
 
     countryCoordPrime = []     
-    d3.csv("/data/world.csv", function(data){
+    d3.csv("/code/data/world.csv", function(data){
         for(let k in dictCountriesPrime){
             data.forEach(function(d) {
                 if (d.name == k){

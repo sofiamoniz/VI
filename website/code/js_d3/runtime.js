@@ -3,7 +3,7 @@ var margin = {top: 10, right: 30, bottom: 60, left: 60},
 width = 1200 - margin.left - margin.right,
 height = 800 - margin.top - margin.bottom;
 
-d3.csv("/data/data.csv", function(data){
+d3.csv("/code/data/data.csv", function(data){
 
     var genreRuntimeNetflix = {}
     var genreRuntimeHulu = {}

@@ -1,4 +1,4 @@
-d3.csv("/data/data.csv", function(data){
+d3.csv("/code/data/data.csv", function(data){
     var dictGenresNetflix = {}
     var dictGenresPrime = {}
     var dictGenresHulu = {}

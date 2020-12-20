@@ -1,5 +1,5 @@
 var dataPie = {}
-d3.csv("/data/data.csv", function(data){
+d3.csv("/code/data/data.csv", function(data){
    var NetflixTitle = 0
    var HuluTitle = 0
    var PrimeTitle = 0
