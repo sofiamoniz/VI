@@ -17,4 +17,4 @@ It should be noted that this data may not apply to all countries.**
 
 -**The final presentation can be found in the folder "presentation"**
 
--**The platform's video can be found on slide of the presentation**
+-**The platform's video can be found on slide 5 of the presentation**
